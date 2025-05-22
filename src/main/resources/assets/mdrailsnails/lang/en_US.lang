@@ -9,6 +9,10 @@ itemGroup.mdrn_blocks=Rails&Nails Blocks
 
 # ITEMS
 
+item.railway_lever.name=Railway Lever
+item.railway_lever.tooltip.0=§fRight-click §7to change rail mode
+item.railway_lever.tooltip.1=§fShift §7+ §fRight-click §7to change rail direction
+
 
 # ENTITIES
 

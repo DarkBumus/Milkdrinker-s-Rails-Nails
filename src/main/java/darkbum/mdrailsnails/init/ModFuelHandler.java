@@ -1,17 +1,15 @@
 package darkbum.mdrailsnails.init;
 
-import darkbum.mdrailsnails.common.config.ModConfigurationWorldGeneration;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.IFuelHandler;
-import darkbum.mdrailsnails.common.config.ModConfigurationItems;
 
 /**
  * Fuel Handler class for custom fuels.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class ModFuelHandler implements IFuelHandler {
 
@@ -24,12 +22,9 @@ public class ModFuelHandler implements IFuelHandler {
     public int getBurnTime(ItemStack itemStack) {
         if (itemStack == null) return 0;
 
-        if (ModConfigurationItems.enableHoney) {
-            if (itemStack.getItem() == ModItems.dev_item) return 400;
-        }
-        if (ModConfigurationWorldGeneration.enableSaltMarsh) {
-            if (itemStack.getItem() == Item.getItemFromBlock(ModBlocks.dev_block)) return 80;
-        }
+/*        if (itemStack.getItem() == ModItems.dev_item) return 400;
+        if (itemStack.getItem() == Item.getItemFromBlock(ModBlocks.dev_block)) return 80;*/
+
         return 0;
     }
 }

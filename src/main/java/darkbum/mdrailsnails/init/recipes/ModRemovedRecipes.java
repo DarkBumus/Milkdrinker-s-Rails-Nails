@@ -15,7 +15,7 @@ import static net.minecraft.init.Items.cake;
  * Recipe remover class.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class ModRemovedRecipes {
 
@@ -29,7 +29,7 @@ public class ModRemovedRecipes {
         Block honeycomb_block = etFuturumBlocks.get("honeycomb_block");
         Block beehive = etFuturumBlocks.get("beehive");
 
-        removeFirstRecipeFor(mushroom_stew,
+/*        removeFirstRecipeFor(mushroom_stew,
             enableRecipeChanges);
         removeFirstRecipeFor(bread,
             enableRecipeChanges, enableDough);
@@ -53,6 +53,6 @@ public class ModRemovedRecipes {
         removeAllRecipesFor(honeycomb_block,
             honeycomb_block != null, enableEFRHoneyCompatibility);
         removeAllRecipesFor(beehive,
-            beehive != null, enableEFRHoneyCompatibility);
+            beehive != null, enableEFRHoneyCompatibility);*/
     }
 }

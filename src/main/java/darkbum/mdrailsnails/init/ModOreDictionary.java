@@ -11,7 +11,7 @@ import static net.minecraft.init.Blocks.*;
  * OreDictionary class.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class ModOreDictionary {
 

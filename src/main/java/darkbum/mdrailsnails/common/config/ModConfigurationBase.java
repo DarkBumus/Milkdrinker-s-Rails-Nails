@@ -16,7 +16,7 @@ import darkbum.mdrailsnails.MDRailsNails;
  * <p>
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class ModConfigurationBase extends Configuration {
 
@@ -27,7 +27,6 @@ public class ModConfigurationBase extends Configuration {
     public static Configuration itemsConfig;
     public static Configuration modCompatConfig;
     public static Configuration vanillaChangesConfig;
-    public static Configuration worldGenConfig;
     public static Configuration otherConfig;
 
     /**
@@ -54,7 +53,6 @@ public class ModConfigurationBase extends Configuration {
         itemsConfig = new Configuration(new File(subDir, "items.cfg"));
         modCompatConfig = new Configuration(new File(subDir, "mod_compatibility.cfg"));
         vanillaChangesConfig = new Configuration(new File(subDir, "vanilla_changes.cfg"));
-        worldGenConfig = new Configuration(new File(subDir, "world_generation.cfg"));
         otherConfig = new Configuration(new File(subDir, "other.cfg"));
     }
 
@@ -65,8 +63,7 @@ public class ModConfigurationBase extends Configuration {
      */
     public void preInit() {
         // Array of configuration files to be processed in this stage
-        Configuration[] configs = { blocksConfig, effectsConfig, entitiesConfig, itemsConfig, modCompatConfig, vanillaChangesConfig,
-            worldGenConfig};
+        Configuration[] configs = { blocksConfig, effectsConfig, entitiesConfig, itemsConfig, modCompatConfig, vanillaChangesConfig};
 
         // Load all configurations
         for (Configuration config : configs) {
@@ -80,7 +77,6 @@ public class ModConfigurationBase extends Configuration {
         ModConfigurationItems.init(itemsConfig);
         ModConfigurationModCompatibility.init(modCompatConfig);
         ModConfigurationVanillaChanges.init(vanillaChangesConfig);
-        ModConfigurationWorldGeneration.init(worldGenConfig);
 
         // Save any changes made during initialization
         for (Configuration config : configs) {

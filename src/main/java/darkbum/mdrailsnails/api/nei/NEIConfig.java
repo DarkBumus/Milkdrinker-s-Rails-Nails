@@ -11,7 +11,7 @@ import codechicken.nei.api.IConfigureNEI;
  * Can register custom NEI listings and recipe handlers for the NEI (Not Enough Items) interface.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class NEIConfig implements IConfigureNEI {
 
@@ -21,9 +21,7 @@ public class NEIConfig implements IConfigureNEI {
      */
     @Override
     public void loadConfig() {
-        API.hideItem(new ItemStack(ModItems.dev_item, 1, 0));
-        API.hideItem(new ItemStack(ModItems.dev_item, 1, 1));
-        API.hideItem(new ItemStack(ModItems.dev_item, 1, 2));
+//        API.hideItem(new ItemStack(ModItems.dev_item, 1, 0));
     }
 
     /**

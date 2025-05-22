@@ -8,12 +8,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import darkbum.mdrailsnails.init.ModItems;
 
 /**
- * Custom Creative Tab for MDRailsNails Expanded Items.
+ * Custom Creative Tab for Milkdrinker's Rails&Nails Items.
  * This tab will display items in the creative inventory.
  * The icon of this tab is the Salt Item.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class TabMDRNItems extends CreativeTabs {
 
@@ -34,6 +34,6 @@ public class TabMDRNItems extends CreativeTabs {
     @Override
     @SideOnly(Side.CLIENT)
     public Item getTabIconItem() {
-        return ModItems.dev_item;
+        return ModItems.railway_lever;
     }
 }

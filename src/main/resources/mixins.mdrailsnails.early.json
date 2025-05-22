@@ -1,8 +1,8 @@
 {
   "required": true,
   "minVersion": "0.8.7-unimixins",
-  "package": "darkbum.saltymod.mixins.early",
-  "refmap": "mixins.saltymod.refmap.json",
+  "package": "darkbum.mdrailsnails.mixins.early",
+  "refmap": "mixins.mdrailsnails.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "client": [

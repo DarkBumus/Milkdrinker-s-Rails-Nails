@@ -6,6 +6,7 @@ import net.minecraft.potion.Potion;
 
 import darkbum.mdrailsnails.item.*;
 
+import static darkbum.mdrailsnails.common.config.ModConfigurationItems.*;
 import static darkbum.mdrailsnails.common.proxy.CommonProxy.*;
 import static darkbum.mdrailsnails.util.ConditionalRegistrar.*;
 
@@ -13,7 +14,7 @@ import static darkbum.mdrailsnails.util.ConditionalRegistrar.*;
  * Items class.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 @SuppressWarnings("unused")
 public class ModItems {
@@ -47,16 +48,17 @@ public class ModItems {
 
     public static CreativeTabs tab = tabMDRNItems;
 
-    public static Item dev_item;
+    public static Item railway_lever;
 
     /**
      * Initializes and registers all blocks.
      */
     public static void init() {
 
-        dev_item = new ItemDevItem("dev_item", null);
+        railway_lever = new ItemRailwayLever("railway_lever", tab).setTextureName("mdrailsnails:railway_lever");
 
 
-        registerItem(dev_item, "dev_item");
+        registerItem(railway_lever, "railway_lever", enableRailwayLever);
+
     }
 }

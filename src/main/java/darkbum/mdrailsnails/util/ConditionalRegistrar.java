@@ -15,7 +15,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
  * This class provides methods to register items, blocks, recipes, and other game components only if certain conditions are met.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class ConditionalRegistrar {
 

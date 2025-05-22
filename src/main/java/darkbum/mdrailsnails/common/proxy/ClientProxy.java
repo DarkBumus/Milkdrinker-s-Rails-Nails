@@ -8,7 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * This class extends behavior defined in {@link CommonProxy}.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class ClientProxy extends CommonProxy {
 

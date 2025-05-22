@@ -4,7 +4,7 @@ package darkbum.mdrailsnails.init.recipes;
  * Recipe class for Furnace Recipes.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class ModSmeltingRecipes {
 

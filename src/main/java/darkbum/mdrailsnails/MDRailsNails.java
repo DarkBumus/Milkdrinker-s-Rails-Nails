@@ -163,7 +163,32 @@ public class MDRailsNails {
 
 /*
  * //TO-DO-LIST//
- * Things I (might) need help with:
- * -
+ * - Junction Rail
+ * - Locking Rail
+ * - Disembarking Rail
+ * - Embarking Rail
+ * - Coupler/Decoupler Rail
+ * - One-Way Rail
+ * - Directional Detector Rail
+ * - Suspended Rail
+ * - Disposal Rail
+ * - Slow-down Rail
+ * - Andesite-Fitted Rails
+ * - High-speed Rails
+ * - Priming Rail (?)
+ * - Launcher Rail
+ * - Elevator Rail
+ * - Inventory Furnace Minecart
+ * - Coupling mechanic
+ * - Rail Layer Minecart
+ * - Rail Remover Minecart
+ * - Chunk Loader
+ * - Chunk Loader Minecart
+ * - Boosting Mechanic
+ * - Directional Redstone Block
+ * - Block Breaker
+ * - Block Placer
+ * - Inventory Interface (?)
+ * - Goggles (?)
  */
 

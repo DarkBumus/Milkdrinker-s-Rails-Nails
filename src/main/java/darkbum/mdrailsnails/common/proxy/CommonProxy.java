@@ -14,7 +14,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
  * Server-side proxy class responsible for server-side initializations like world generation.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class CommonProxy {
 

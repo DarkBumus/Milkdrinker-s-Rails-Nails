@@ -12,7 +12,7 @@ import net.minecraftforge.common.config.Configuration;
  * This class is initialized during the pre-initialization stage of the mod lifecycle.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class ModConfigurationEntities {
 
@@ -26,9 +26,7 @@ public class ModConfigurationEntities {
     private static final String compatibilityStringEFR2 = " to be present";
 
     // Effects Config Options
-    public static boolean enableHornedSheep;
 
-    public static boolean hornedSheepThinHorns;
 
     /**
      * Initializes the entity configuration settings by reading values from the provided configuration file.
@@ -37,19 +35,5 @@ public class ModConfigurationEntities {
      */
     public static void init(Configuration config) {
         config.setCategoryComment(categoryNameEnt, categoryDescriptionEnt);
-
-        enableHornedSheep = config.getBoolean(
-            "01-enableHornedSheep",
-            categoryNameEnt,
-            true,
-            enableFeatures + "\nHorned Sheep"
-            + "\nHorn"
-            + "\n");
-
-        hornedSheepThinHorns = config.getBoolean(
-            "02-hornedSheepThinHorns",
-            categoryNameEnt,
-            false,
-            "Changes the model and texture to give the Horned Sheep thinner horns");
     }
 }

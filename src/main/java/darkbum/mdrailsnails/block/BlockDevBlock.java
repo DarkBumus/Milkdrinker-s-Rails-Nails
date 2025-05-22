@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * The dev is a testing block.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class BlockDevBlock extends Block {
 

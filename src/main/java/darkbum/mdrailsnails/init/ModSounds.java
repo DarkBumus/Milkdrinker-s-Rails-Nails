@@ -6,41 +6,18 @@ import net.minecraft.block.Block;
  * Sounds class.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class ModSounds {
 
-    public static final Block.SoundType soundTypeMud = new Block.SoundType("MudBlock", 1.0F, 1.0F) {
+/*    public static final Block.SoundType soundTypeMud = new Block.SoundType("MudBlock", 1.0F, 1.0F) {
         public String getBreakSound() {
             return "mdrailsnails:block.mud.break";
         }
         public String getStepResourcePath() {
             return "mdrailsnails:block.mud.step";
         }
-    };
-
-    public static final Block.SoundType soundTypeWetMudBrick = new Block.SoundType("MudBrickWet", 1.0F, 1.0F) {
-        public String getBreakSound() {
-            return "mdrailsnails:block.wet_mud_bricks.break";
-        }
-        public String getStepResourcePath() {
-            return "mdrailsnails:block.wet_mud_bricks.step";
-        }
-    };
-
-    public static final Block.SoundType soundTypeDryMudBrick = new Block.SoundType("MudBrickDry", 1.0F, 1.0F) {
-        public String getBreakSound() {
-            return "mdrailsnails:block.dry_mud_bricks.break";
-        }
-        public String getStepResourcePath() {
-            return "mdrailsnails:block.dry_mud_bricks.step";
-        }
-    };
-
-    public static final Block.SoundType soundTypeCookingPot = new Block.SoundType("CookingPot", 1.0F, 1.0F) {
-        public String getBreakSound() { return "mdrailsnails:block.cooking_pot.break"; }
-        public String getStepResourcePath() { return "mdrailsnails:block.cooking_pot.step"; }
-    };
+    };*/
 
 
     /**

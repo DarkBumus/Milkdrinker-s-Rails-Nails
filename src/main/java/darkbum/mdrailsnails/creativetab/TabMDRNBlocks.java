@@ -8,12 +8,12 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * Custom Creative Tab for MDRailsNails Expanded Blocks.
+ * Custom Creative Tab for Milkdrinker's Rails&Nails Blocks.
  * This tab will display blocks in the creative inventory.
  * The icon of this tab is the Salt Block.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class TabMDRNBlocks extends CreativeTabs {
 

@@ -8,7 +8,7 @@ import static darkbum.mdrailsnails.init.ModExternalLoader.*;
  * Recipe class for Shapeless Recipes.
  *
  * @author DarkBum
- * @since 1.9.f
+ * @since 1.0.0
  */
 public class ModShapelessRecipes {
 

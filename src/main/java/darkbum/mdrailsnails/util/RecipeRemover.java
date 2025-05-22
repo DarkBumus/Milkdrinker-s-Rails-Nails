@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Provides methods to remove recipes by item, block, metadata, and quantity.
  *
  * @author DarkBum
- * @since 2.0.0
+ * @since 1.0.0
  */
 public class RecipeRemover {
 
