@@ -1,0 +1,154 @@
+{
+"block.dry_mud_bricks.break": {
+    "category": "block",
+    "sounds": [
+      "block/dry_mud_bricks/break1",
+      "block/dry_mud_bricks/break2",
+      "block/dry_mud_bricks/break3",
+      "block/dry_mud_bricks/break4",
+      "block/dry_mud_bricks/break5",
+      "block/dry_mud_bricks/break6"
+    ]
+  },
+"block.dry_mud_bricks.step": {
+    "category": "block",
+    "sounds": [
+      "block/dry_mud_bricks/step1",
+      "block/dry_mud_bricks/step2",
+      "block/dry_mud_bricks/step3",
+      "block/dry_mud_bricks/step4",
+      "block/dry_mud_bricks/step5",
+      "block/dry_mud_bricks/step6"
+    ]
+  },
+"block.mud.break": {
+    "category": "block",
+    "sounds": [
+      "block/mud/break1",
+      "block/mud/break2",
+      "block/mud/break3",
+      "block/mud/break4",
+      "block/mud/break5",
+      "block/mud/break6"
+    ]
+  },
+"block.mud.step": {
+    "category": "block",
+    "sounds": [
+      "block/mud/step1",
+      "block/mud/step2",
+      "block/mud/step3",
+      "block/mud/step4",
+      "block/mud/step5",
+      "block/mud/step6"
+    ]
+  },
+"block.wet_mud_bricks.break": {
+    "category": "block",
+    "sounds": [
+      "block/wet_mud_bricks/break1",
+      "block/wet_mud_bricks/break2",
+      "block/wet_mud_bricks/break3",
+      "block/wet_mud_bricks/break4",
+      "block/wet_mud_bricks/break5",
+      "block/wet_mud_bricks/break6"
+    ]
+  },
+"block.wet_mud_bricks.step": {
+    "category": "block",
+    "sounds": [
+	  "block/wet_mud_bricks/step1",
+      "block/wet_mud_bricks/step2",
+      "block/wet_mud_bricks/step3",
+      "block/wet_mud_bricks/step4",
+      "block/wet_mud_bricks/step5",
+      "block/wet_mud_bricks/step6"
+    ]
+  },
+"block.bee_burrow.bees": {
+	"category": "block",
+	"sounds": [
+	  "block/bee_burrow/bees1",
+	  "block/bee_burrow/bees2",
+	  "block/bee_burrow/bees3"
+	]
+  },
+"block.stove.crackle": {
+	"category": "block",
+	"sounds": [
+	  "block/stove/crackle1",
+	  "block/stove/crackle2",
+	  "block/stove/crackle3",
+	  "block/stove/crackle4",
+	  "block/stove/crackle5",
+	  "block/stove/crackle6"
+    ]
+  },
+"block.cooking_pot.break": {
+	"category": "block",
+	"sounds": [
+	  "block/cooking_pot/break1",
+	  "block/cooking_pot/break2",
+	  "block/cooking_pot/break3",
+	  "block/cooking_pot/break4",
+	  "block/cooking_pot/break5",
+	  "block/cooking_pot/break6"
+	  ]
+  },
+"block.cooking_pot.step": {
+	"category": "block",
+	"sounds": [
+	  "block/cooking_pot/step1",
+	  "block/cooking_pot/step2",
+	  "block/cooking_pot/step3",
+	  "block/cooking_pot/step4",
+	  "block/cooking_pot/step5",
+	  "block/cooking_pot/step6"
+	]
+  },
+"block.cooking_pot.boil_full": {
+	"category": "block",
+	"sounds": [
+	  "block/cooking_pot/boil_full1",
+	  "block/cooking_pot/boil_full2",
+	  "block/cooking_pot/boil_full3"
+    ]
+  },
+"block.cooking_pot.boil_empty": {
+	"category": "block",
+	"sounds": [
+	  "block/cooking_pot/boil_empty1",
+	  "block/cooking_pot/boil_empty2"
+    ]
+  },
+  "mob.horned_sheep.say": {
+	"category": "neutral",
+	"sounds": [
+	  "mob/horned_sheep/say1",
+	  "mob/horned_sheep/say2",
+	  "mob/horned_sheep/say3"
+	]
+  },
+  "item.axe.strip": {
+	"category": "block",
+	"sounds": [
+	  "item/axe/strip1",
+	  "item/axe/strip2",
+	  "item/axe/strip3",
+	  "item/axe/strip4"
+	]
+  },
+  "item.chorus_cookie.portal": {
+	"category": "player",
+	"sounds": [
+	  "item/chorus_cookie/portal1",
+	  "item/chorus_cookie/portal2"
+	]
+  },
+    "item.shears.shear": {
+	"category": "player",
+	"sounds": [
+	  "item/shears/shear"
+	]
+  }
+}
