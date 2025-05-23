@@ -48,9 +48,12 @@ public class ModExternalLoader {
         etFuturumBlocks.put("blue_ice", findBlock("etfuturum", "blue_ice"));
         etFuturumBlocks.put("deepslate", findBlock("etfuturum", "deepslate"));
         etFuturumBlocks.put("magma", findBlock("etfuturum", "magma"));
+        etFuturumBlocks.put("blast_furnace", findBlock("etfuturum", "blast_furnace"));
+        etFuturumBlocks.put("lit_blast_furnace", findBlock("etfuturum", "lit_blast_furnace"));
         etFuturumBlocks.put("nether_fungus", findBlock("etfuturum", "nether_fungus"));
         etFuturumBlocks.put("honeycomb_block", findBlock("etfuturum", "honeycomb_block"));
         etFuturumBlocks.put("beehive", findBlock("etfuturum", "beehive"));
+
 
         etFuturumItems.put("suspicious_stew", findItem("etfuturum", "suspicious_stew"));
         etFuturumItems.put("mutton_raw", findItem("etfuturum", "mutton_raw"));

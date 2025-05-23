@@ -1,7 +1,12 @@
 package darkbum.mdrailsnails.common.proxy;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
+import darkbum.mdrailsnails.MDRailsNails;
 import darkbum.mdrailsnails.creativetab.TabMDRNBlocks;
 import darkbum.mdrailsnails.creativetab.TabMDRNItems;
+import darkbum.mdrailsnails.event.CartPhysicsHandler;
+import darkbum.mdrailsnails.event.EntityInteractEventHandler;
+import darkbum.mdrailsnails.util.GuiHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -31,6 +36,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         // Register event handlers
         registerEventHandlers();
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(MDRailsNails.instance, new GuiHandler());
     }
 
     /**
@@ -53,7 +60,8 @@ public class CommonProxy {
      * Registers the event handlers for pre-initialization.
      */
     private void registerEventHandlers() {
-//        register(new AchievementEventHandler());
+        register(new EntityInteractEventHandler());
+        register(new CartPhysicsHandler());
     }
 
     /**

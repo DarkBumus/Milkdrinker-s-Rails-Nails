@@ -27,10 +27,14 @@ public class ItemRailwayLever extends ItemTool {
         Blocks.activator_rail
     ));
 
+    public static final Set<Block> OTHER_RAIL = new HashSet<>(Arrays.asList(
+    ));
+
     private static final Set<Block> EFFECTIVE_BLOCKS = new HashSet<>();
     static {
         EFFECTIVE_BLOCKS.addAll(NON_POWERED_RAILS);
         EFFECTIVE_BLOCKS.addAll(POWERED_RAILS);
+        EFFECTIVE_BLOCKS.addAll(OTHER_RAIL);
     }
 
     public ItemRailwayLever(String name, CreativeTabs tab) {

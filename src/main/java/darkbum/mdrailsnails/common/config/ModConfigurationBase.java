@@ -63,7 +63,7 @@ public class ModConfigurationBase extends Configuration {
      */
     public void preInit() {
         // Array of configuration files to be processed in this stage
-        Configuration[] configs = { blocksConfig, effectsConfig, entitiesConfig, itemsConfig, modCompatConfig, vanillaChangesConfig};
+        Configuration[] configs = {blocksConfig, effectsConfig, entitiesConfig, itemsConfig, modCompatConfig, vanillaChangesConfig};
 
         // Load all configurations
         for (Configuration config : configs) {

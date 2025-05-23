@@ -49,6 +49,7 @@ public class ModItems {
     public static CreativeTabs tab = tabMDRNItems;
 
     public static Item railway_lever;
+    public static Item hauler_minecart;
 
     /**
      * Initializes and registers all blocks.
@@ -56,9 +57,11 @@ public class ModItems {
     public static void init() {
 
         railway_lever = new ItemRailwayLever("railway_lever", tab).setTextureName("mdrailsnails:railway_lever");
+        hauler_minecart = new ItemHaulerMinecart("hauler_minecart", tab).setUnlocalizedName("hauler_minecart").setTextureName("mdrailsnails:hauler_minecart");
 
 
         registerItem(railway_lever, "railway_lever", enableRailwayLever);
+        registerItem(hauler_minecart, "hauler_minecart");
 
     }
 }

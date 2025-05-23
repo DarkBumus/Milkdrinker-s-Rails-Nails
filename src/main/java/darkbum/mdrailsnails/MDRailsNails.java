@@ -3,12 +3,14 @@ package darkbum.mdrailsnails;
 import java.io.File;
 
 import darkbum.mdrailsnails.common.proxy.CommonProxy;
+import darkbum.mdrailsnails.event.MinecartCollider;
 import darkbum.mdrailsnails.init.*;
 
 import darkbum.mdrailsnails.init.recipes.ModRemovedRecipes;
 import darkbum.mdrailsnails.init.recipes.ModShapedRecipes;
 import darkbum.mdrailsnails.init.recipes.ModShapelessRecipes;
 import darkbum.mdrailsnails.init.recipes.ModSmeltingRecipes;
+import net.minecraft.entity.item.EntityMinecart;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +26,7 @@ import darkbum.mdrailsnails.common.config.ModConfigurationBase;
 
 import static cpw.mods.fml.common.Loader.isModLoaded;
 import static cpw.mods.fml.common.registry.GameRegistry.*;
+import static darkbum.mdrailsnails.common.config.ModConfigurationEntities.*;
 import static net.minecraft.util.EnumChatFormatting.*;
 
 /**
@@ -99,6 +102,7 @@ public class MDRailsNails {
         // Register miscellaneous registries and handlers
         registerFuelHandler(new ModFuelHandler());
         ModFlammabilityHandler.init();
+        if (enableBetaMinecartBoosting) EntityMinecart.setCollisionHandler(new MinecartCollider());
 
         proxy.preInit(event);
 
@@ -184,11 +188,13 @@ public class MDRailsNails {
  * - Rail Remover Minecart
  * - Chunk Loader
  * - Chunk Loader Minecart
- * - Boosting Mechanic
  * - Directional Redstone Block
  * - Block Breaker
  * - Block Placer
  * - Inventory Interface (?)
  * - Goggles (?)
+ * - Minecart Speed Gamerule (?)
+ *
+ * - Fix the Hauler Cart GUI
  */
 

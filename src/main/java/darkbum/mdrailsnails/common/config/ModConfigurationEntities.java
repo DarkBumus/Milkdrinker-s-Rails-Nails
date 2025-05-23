@@ -26,6 +26,7 @@ public class ModConfigurationEntities {
     private static final String compatibilityStringEFR2 = " to be present";
 
     // Effects Config Options
+    public static boolean enableBetaMinecartBoosting;
 
 
     /**
@@ -35,5 +36,11 @@ public class ModConfigurationEntities {
      */
     public static void init(Configuration config) {
         config.setCategoryComment(categoryNameEnt, categoryDescriptionEnt);
+
+        enableBetaMinecartBoosting = config.getBoolean(
+            "01-enableMetaMinecartBoosting",
+            categoryNameEnt,
+            true,
+            "Regulates whether or not to re-implement Pre-Beta1.6 Minecart Boosting.");
     }
 }

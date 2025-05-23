@@ -12,9 +12,27 @@ itemGroup.mdrn_blocks=Rails&Nails Blocks
 item.railway_lever.name=Railway Lever
 item.railway_lever.tooltip.0=§fRight-click §7to change rail mode
 item.railway_lever.tooltip.1=§fShift §7+ §fRight-click §7to change rail direction
+item.railway_lever.link.started=Link Started
+item.railway_lever.link.finished=Link Finished
+item.railway_lever.link.broken=Link Broken
+item.railway_lever.link.failed_same=Link Failed: You cannot link a cart to itself.
+item.railway_lever.link.failed_not_found=Link Failed: Original cart not found.
+item.railway_lever.link.failed_too_far=Link Failed: The carts are too far apart.
+item.railway_lever.link.failed_too_many=Link Failed: You cannot link too many carts.
+item.hauler_minecart.name=Hauler Minecart
 
 
 # ENTITIES
+
+entity.MinecartRideable.name=Minecart
+entity.MinecartChest.name=Minecart with Chest
+entity.MinecartFurnace.name=Minecart with Furnace
+entity.MinecartTNT.name=Minecart with TNT
+entity.MinecartHopper.name=Minecart with Hopper
+entity.MinecartCommandBlock.name=Minecart with Command Block
+
+entity.mdrailsnails.hauler_minecart.name=Hauler Minecart
+container.hauler_minecart=Hauler Minecart
 
 
 # ACHIEVEMENTS

@@ -83,10 +83,15 @@ public class ItemUtils {
         switch (meta) {
             case 0: newMeta = 1; break;
             case 1: newMeta = 0; break;
+            case 2: newMeta = 3; break;
+            case 3: newMeta = 4; break;
+            case 4: newMeta = 5; break;
+            case 5: newMeta = 2; break;
             case 6: newMeta = 7; break;
             case 7: newMeta = 8; break;
             case 8: newMeta = 9; break;
             case 9: newMeta = 6; break;
+
             default: return;
         }
 
@@ -119,8 +124,18 @@ public class ItemUtils {
         switch (meta) {
             case 0: newMeta = 1; break;
             case 1: newMeta = 0; break;
+            case 2: newMeta = 3; break;
+            case 3: newMeta = 4; break;
+            case 4: newMeta = 5; break;
+            case 5: newMeta = 2; break;
+
             case 8: newMeta = 9; break;
             case 9: newMeta = 8; break;
+            case 10: newMeta = 11; break;
+            case 11: newMeta = 12; break;
+            case 12: newMeta = 13; break;
+            case 13: newMeta = 10; break;
+
             default: return;
         }
 
@@ -155,8 +170,18 @@ public class ItemUtils {
         switch (meta) {
             case 0: newMeta = 8; break;
             case 1: newMeta = 9; break;
+            case 2: newMeta = 10; break;
+            case 3: newMeta = 11; break;
+            case 4: newMeta = 12; break;
+            case 5: newMeta = 13; break;
+
             case 8: newMeta = 0; break;
             case 9: newMeta = 1; break;
+            case 10: newMeta = 2; break;
+            case 11: newMeta = 3; break;
+            case 12: newMeta = 4; break;
+            case 13: newMeta = 5; break;
+
             default: return;
         }
 
