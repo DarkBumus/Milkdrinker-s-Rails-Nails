@@ -8,5 +8,7 @@
   "client": [
   ],
   "server": [
+  ],
+  "mixins": [
   ]
 }

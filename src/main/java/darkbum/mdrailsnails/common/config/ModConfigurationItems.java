@@ -31,7 +31,11 @@ public class ModConfigurationItems {
 
     // Items Config Options
     public static boolean enableRailwayLever;
-    public static boolean enableRailwayLeverDebugAbility;
+    public static boolean enableRailwayLeverModeAbility;
+    public static boolean enableRailwayLeverTurningAbility;
+    public static boolean enableRailwayLeverPushingAbility;
+    public static boolean enableRailwayLeverLinkingAbility;
+    public static boolean enableRailwayLeverWhackingAbility;
 
 
     /**
@@ -50,10 +54,34 @@ public class ModConfigurationItems {
                 + "\nRailway Lever"
                 + "\n");
 
-        enableRailwayLeverDebugAbility = config.getBoolean(
-            "02-enableRailwayLeverDebugAbility",
+        enableRailwayLeverModeAbility = config.getBoolean(
+            "02-enableRailwayLeverModeAbility",
             categoryNameIteArm,
             true,
             "Regulates whether or not the Railway Lever should be able to change powered rails from active to inactive and vice-versa");
+
+        enableRailwayLeverTurningAbility = config.getBoolean(
+            "03-enableRailwayLeverTurningAbility",
+            categoryNameIteArm,
+            true,
+            "Regulates whether or not the Railway Lever should be able to turn rails");
+
+        enableRailwayLeverPushingAbility = config.getBoolean(
+            "04-enableRailwayLeverPushingAbility",
+            categoryNameIteArm,
+            true,
+            "Regulates whether or not the Railway Lever should able able to push carts");
+
+        enableRailwayLeverLinkingAbility = config.getBoolean(
+            "05-enableRailwayLeverLinkingAbility",
+            categoryNameIteArm,
+            true,
+            "Regulates whether or not the Railway Lever should be able to link carts");
+
+        enableRailwayLeverWhackingAbility = config.getBoolean(
+            "06-enableRailwayLeverWhackingAbility",
+            categoryNameIteArm,
+            true,
+            "Regulates whether or not the Railway Lever should be able to whack carts");
     }
 }

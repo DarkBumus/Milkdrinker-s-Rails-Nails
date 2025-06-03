@@ -28,6 +28,8 @@ public class ModConfigurationEntities {
     // Effects Config Options
     public static boolean enableBetaMinecartBoosting;
 
+    public static boolean enableHaulerMinecart;
+
 
     /**
      * Initializes the entity configuration settings by reading values from the provided configuration file.
@@ -42,5 +44,13 @@ public class ModConfigurationEntities {
             categoryNameEnt,
             true,
             "Regulates whether or not to re-implement Pre-Beta1.6 Minecart Boosting.");
+
+        enableHaulerMinecart = config.getBoolean(
+            "02-enableHaulerMinecart",
+            categoryNameEnt,
+            true,
+            enableFeatures
+            + "\nHauler Minecart"
+            + "\n");
     }
 }

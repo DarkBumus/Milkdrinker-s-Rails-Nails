@@ -1,6 +1,5 @@
 package darkbum.mdrailsnails.init;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.IFuelHandler;

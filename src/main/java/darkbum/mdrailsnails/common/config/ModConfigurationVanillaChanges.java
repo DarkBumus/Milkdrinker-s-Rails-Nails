@@ -26,6 +26,10 @@ public class ModConfigurationVanillaChanges {
     private static final String compatibilityString2 = " to be present";
 
     // Config Options VanillaChanges
+    public static boolean enableRecipeChanges;
+
+    public static boolean enableMinecartMaxSpeedGameRule;
+    public static int minecartMaxSpeedBaseValue;
 
 
     /**
@@ -36,5 +40,29 @@ public class ModConfigurationVanillaChanges {
      */
     public static void init(Configuration config) {
         config.setCategoryComment(categoryNameVan, categoryDescriptionVan);
+
+        enableRecipeChanges = config.getBoolean(
+            "01-enableRecipeChanges",
+            categoryNameVan,
+            true,
+            "Changes the following vanilla Crafting Recipes:"
+                + "\nBooster Rail - Now gets crafted with Iron Ingots aswell as Gold Ingots and produces 8 instead of 6 Booster Rails when crafted."
+                + "\nDetector Rail - Now gets crafted with Copper Ingots aswell as a Stick"
+                + "\nActivator Rail - Now gets crafted with Copper Ingots aswell as Redstone"
+                + "\n");
+
+        enableMinecartMaxSpeedGameRule = config.getBoolean(
+            "02-enableMinecartMaxSpeedGameRule",
+            categoryNameVan,
+            true,
+            enableFeatures + "minecartMaxSpeed Game Rule"
+            + "\n");
+        minecartMaxSpeedBaseValue = config.getInt(
+            "03-minecartMaxSpeedBaseValue",
+            categoryNameVan,
+            8,
+            1,
+            10,
+            "Regulates the base maximum speed of minecarts, before the minecartMaxSpeed Game Rule is applied.");
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.potion.Potion;
 
 import darkbum.mdrailsnails.item.*;
 
+import static darkbum.mdrailsnails.common.config.ModConfigurationEntities.*;
 import static darkbum.mdrailsnails.common.config.ModConfigurationItems.*;
 import static darkbum.mdrailsnails.common.proxy.CommonProxy.*;
 import static darkbum.mdrailsnails.util.ConditionalRegistrar.*;
@@ -48,6 +49,7 @@ public class ModItems {
 
     public static CreativeTabs tab = tabMDRNItems;
 
+    public static Item dev_controller;
     public static Item railway_lever;
     public static Item hauler_minecart;
 
@@ -56,12 +58,14 @@ public class ModItems {
      */
     public static void init() {
 
+        dev_controller = new ItemDevController("dev_controller", tab).setTextureName("mdrailsnails:dev/dev_controller");
         railway_lever = new ItemRailwayLever("railway_lever", tab).setTextureName("mdrailsnails:railway_lever");
-        hauler_minecart = new ItemHaulerMinecart("hauler_minecart", tab).setUnlocalizedName("hauler_minecart").setTextureName("mdrailsnails:hauler_minecart");
+        hauler_minecart = new ItemMinecartHauler("hauler_minecart", tab).setUnlocalizedName("hauler_minecart").setTextureName("mdrailsnails:hauler_minecart");
 
 
+        registerItem(dev_controller, "dev_controller");
         registerItem(railway_lever, "railway_lever", enableRailwayLever);
-        registerItem(hauler_minecart, "hauler_minecart");
+        registerItem(hauler_minecart, "hauler_minecart", enableHaulerMinecart);
 
     }
 }

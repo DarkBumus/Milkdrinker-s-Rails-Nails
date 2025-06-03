@@ -6,19 +6,98 @@ itemGroup.mdrn_blocks=Rails&Nails Blocks
 
 # BLOCKS
 
+tile.junction_rail.name=Junction Rail
+tile.junction_rail.tooltip.0=Carts can pass in both directions simultaneously
+
+tile.wye_rail.name=Wye Rail
+tile.wye_rail.tooltip.0=Carts can pass in the direction of the rails
+tile.wye_rail.tooltip.1=§9- Right-click with Railway Lever to change direction -
+tile.wye_rail.mess.j=§9Wye Rail§f: Wye-Junction Mode
+tile.wye_rail.mess.r=§9Wye Rail§f: Right Way Mode
+tile.wye_rail.mess.l=§9Wye Rail§f: Left Way Mode
+
+tile.slowdown_rail.name=Slowdown Rail
+tile.slowdown_rail.tooltip_0=Carts get slowed to 30% of the normal speed
+tile.slowdown_rail.tooltip_1=§c- Apply Redstone to enable -
+
+tile.one_way_rail.name=One-Way Rail
+tile.one_way_rail.tooltip.0=Carts can only pass in one direction
+tile.one_way_rail.tooltip.1=§9- Right-click with Railway Lever to change direction -
+tile.one_way_rail.tooltip.2=§c- Apply Redstone to enable -
+tile.one_way_rail.mess.r=§9One-Way Rail§f: South>North/West>East Mode
+tile.one_way_rail.mess.l=§9One-Way Rail§f: North>South/East>West Mode
+
+tile.locking_rail.name=Locking Rail
+tile.locking_rail.tooltip.0=Stops and holds a passing cart in place
+tile.locking_rail.tooltip.1=§9- Right-click with Railway Lever to change mode -
+tile.locking_rail.tooltip.2=§c- Apply Redstone to enable -
+tile.locking_rail.mess.base=§9Locking Rail§f: Locking Mode
+tile.locking_rail.mess.release=§9Locking Rail§f: Release Mode
+tile.locking_rail.mess.release_i=§9Locking Rail§f: Inverted Release Mode
+tile.locking_rail.mess.release_r=§9Locking Rail§f: South>North/West>East Release Mode
+tile.locking_rail.mess.release_l=§9Locking Rail§f: North>South/East>West Release Mode
+
+tile.dismounting_rail.name=Dismounting Rail
+tile.dismounting_rail.tooltip.0=Dismounts riding entities from a passing cart
+tile.dismounting_rail.tooltip.1=§9- Right-click with Railway Lever to change direction -
+tile.dismounting_rail.tooltip.2=§c- Apply Redstone to enable -
+tile.dismounting_rail.mess.se=§9Dismounting Rail§f: South/West Dismount Mode
+tile.dismounting_rail.mess.nw=§9Dismounting Rail§f: North/East Dismount Mode
+tile.dismounting_rail.mess.blocked=§9Dismounting Rail§f: §cDismounting Location blocked!
+
+tile.mounting_rail.name=Mounting Rail
+tile.mounting_rail.tooltip.0=Loads a nearby entity into a passing cart
+tile.mounting_rail.tooltip.1=§c- Apply Redstone to enable -
+
+tile.coupling_rail.name=Coupling Rail
+tile.coupling_rail.tooltip.0=Couples and decouples passing carts
+tile.coupling_rail.tooltip.1=§9- Right-click with Railway Lever to change mode -
+tile.coupling_rail.tooltip.2=§c- Apply Redstone to enable -
+tile.coupling_rail.mess.base=§9Coupling Rail§f: Coupling Mode
+tile.coupling_rail.mess.de=§9Coupling Rail§f: Decoupling Mode
+tile.coupling_rail.mess.auto=§9Coupling Rail§f: Autocoupling Mode
+tile.coupling_rail.mess.link.started=§9Coupling Rail§f: Link Started
+tile.coupling_rail.mess.link.created=§9Coupling Rail§f: Link Created
+tile.coupling_rail.mess.link.broken=§9Coupling Rail§f: Link Broken
+tile.coupling_rail.mess.link.failed_too_far=§9Coupling Rail§f: Link Failed: The carts are too far apart.
+tile.coupling_rail.mess.link.failed_too_many=§9Coupling Rail§f: Link Failed: You cannot link too many carts.
+tile.coupling_rail.mess.link.failed_already_linked=§9Coupling Rail§f: Link Failed: These carts are already linked.
+
+tile.suspended_rail.name=Suspended Rail
+tile.suspended_rail.tooltip.0=Can be suspended in air
+
+tile.disposing_rail.name=Disposing Rail
+tile.disposing_rail.tooltip.0=Dismounts riding entities from the cart
+tile.disposing_rail.tooltip.1=§c- Apply Redstone to enable -
+tile.disposing_rail.mess.blocked=§9Dismounting Rail§f: §cDisposing Location blocked!
+
+tile.launching_rail.name=Launching Rail
+tile.launching_rail.tooltip.0=Launches a passing cart into the air
+tile.launching_rail.tooltip.1=§c- Apply Redstone to enable -
+
+tile.cart_dislocating_rail.name=Cart Dislocating Rail
+tile.cart_dislocating_rail.tooltip.0=Removes a passing cart and stores it in an inventory below
+tile.cart_dislocating_rail.tooltip.1=§c- Apply Redstone to enable -
+
 
 # ITEMS
 
+item.all.tooltip.hidden=§9- Press Shift to reveal more information -
+
 item.railway_lever.name=Railway Lever
-item.railway_lever.tooltip.0=§fRight-click §7to change rail mode
-item.railway_lever.tooltip.1=§fShift §7+ §fRight-click §7to change rail direction
-item.railway_lever.link.started=Link Started
-item.railway_lever.link.finished=Link Finished
-item.railway_lever.link.broken=Link Broken
-item.railway_lever.link.failed_same=Link Failed: You cannot link a cart to itself.
-item.railway_lever.link.failed_not_found=Link Failed: Original cart not found.
-item.railway_lever.link.failed_too_far=Link Failed: The carts are too far apart.
-item.railway_lever.link.failed_too_many=Link Failed: You cannot link too many carts.
+item.railway_lever.tooltip.0=§fRight-click §7on rail to change rail mode
+item.railway_lever.tooltip.1=§fShift §7+ §fRight-click §7on rail to change rail direction
+item.railway_lever.tooltip.2=§fRight-click §7on cart to push cart
+item.railway_lever.tooltip.3=§fShift §7+ §fRight-click §7on cart to link carts
+item.railway_lever.tooltip=§4Railway Lever Fallback Tooltip: SOMETHING WENT WRONG!
+item.railway_lever.mess.link.started=Link Started
+item.railway_lever.mess.link.created=Link Created
+item.railway_lever.mess.link.broken=Link Broken
+item.railway_lever.mess.link.failed_same=Link Failed: You cannot link a cart to itself.
+item.railway_lever.mess.link.failed_not_found=Link Failed: Original cart not found.
+item.railway_lever.mess.link.failed_too_far=Link Failed: The carts are too far apart.
+item.railway_lever.mess.link.failed_too_many=Link Failed: You cannot link too many carts.
+
 item.hauler_minecart.name=Hauler Minecart
 
 
@@ -33,6 +112,15 @@ entity.MinecartCommandBlock.name=Minecart with Command Block
 
 entity.mdrailsnails.hauler_minecart.name=Hauler Minecart
 container.hauler_minecart=Hauler Minecart
+container.hauler_minecart.fueltime=Seconds
 
 
 # ACHIEVEMENTS
+
+
+# HANDS OFF!
+
+item.railway_lever.tooltip.0.condition=enableRailwayLeverModeAbility
+item.railway_lever.tooltip.1.condition=enableRailwayLeverTurningAbility
+item.railway_lever.tooltip.2.condition=enableRailwayLeverPushingAbility
+item.railway_lever.tooltip.3.condition=enableRailwayLeverLinkingAbility

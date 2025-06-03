@@ -1,4 +1,4 @@
-package darkbum.mdrailsnails.event;
+package darkbum.mdrailsnails.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityMinecart;

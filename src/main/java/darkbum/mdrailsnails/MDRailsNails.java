@@ -3,7 +3,7 @@ package darkbum.mdrailsnails;
 import java.io.File;
 
 import darkbum.mdrailsnails.common.proxy.CommonProxy;
-import darkbum.mdrailsnails.event.MinecartCollider;
+import darkbum.mdrailsnails.util.MinecartCollider;
 import darkbum.mdrailsnails.init.*;
 
 import darkbum.mdrailsnails.init.recipes.ModRemovedRecipes;
@@ -86,7 +86,7 @@ public class MDRailsNails {
         event.getModMetadata().name = GOLD + NAME + WHITE;
         event.getModMetadata().version = YELLOW + VERSION;
         event.getModMetadata().credits = AQUA
-            + "Thanks to contributors ";
+            + "Thanks to contributor Jack";
 
         // Load and initialize configuration files
         File configDir = new File(event.getModConfigurationDirectory(), "mdrailsnails");
@@ -167,23 +167,14 @@ public class MDRailsNails {
 
 /*
  * //TO-DO-LIST//
- * - Junction Rail
- * - Locking Rail
- * - Disembarking Rail
- * - Embarking Rail
- * - Coupler/Decoupler Rail
- * - One-Way Rail
+ * - Junction Rail [Later]
  * - Directional Detector Rail
- * - Suspended Rail
  * - Disposal Rail
  * - Slow-down Rail
  * - Andesite-Fitted Rails
  * - High-speed Rails
- * - Priming Rail (?)
  * - Launcher Rail
- * - Elevator Rail
- * - Inventory Furnace Minecart
- * - Coupling mechanic
+ * - Elevator Rail (?)
  * - Rail Layer Minecart
  * - Rail Remover Minecart
  * - Chunk Loader
@@ -194,7 +185,8 @@ public class MDRailsNails {
  * - Inventory Interface (?)
  * - Goggles (?)
  * - Minecart Speed Gamerule (?)
+ * - Rail Observer
+ * - Railway Lever Dispenser Behavior
  *
- * - Fix the Hauler Cart GUI
  */
 

@@ -1,10 +1,11 @@
 package darkbum.mdrailsnails.api.nei;
 
-import darkbum.mdrailsnails.init.ModItems;
 import net.minecraft.item.ItemStack;
 
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
+
+import static darkbum.mdrailsnails.init.ModBlocks.*;
 
 /**
  * NEI plugin configuration for Milkdrinker's Rails&Nails
@@ -21,7 +22,15 @@ public class NEIConfig implements IConfigureNEI {
      */
     @Override
     public void loadConfig() {
-//        API.hideItem(new ItemStack(ModItems.dev_item, 1, 0));
+        API.hideItem(new ItemStack(wye_rail_r));
+        API.hideItem(new ItemStack(wye_rail_l));
+        API.hideItem(new ItemStack(one_way_rail_l));
+        API.hideItem(new ItemStack(locking_release_rail));
+        API.hideItem(new ItemStack(locking_release_rail_i));
+        API.hideItem(new ItemStack(locking_release_rail_r));
+        API.hideItem(new ItemStack(locking_release_rail_l));
+        API.hideItem(new ItemStack(dismounting_rail_nw));
+        API.hideItem(new ItemStack(decoupling_rail));
     }
 
     /**

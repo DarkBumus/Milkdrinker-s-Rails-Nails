@@ -1,6 +1,6 @@
 package darkbum.mdrailsnails.item;
 
-import darkbum.mdrailsnails.entity.EntityHaulerMinecart;
+import darkbum.mdrailsnails.entity.EntityMinecartHauler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockRailBase;
@@ -15,9 +15,9 @@ import net.minecraft.world.World;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class ItemHaulerMinecart extends Item {
+public class ItemMinecartHauler extends Item {
 
-    public ItemHaulerMinecart(String name, CreativeTabs tab) {
+    public ItemMinecartHauler(String name, CreativeTabs tab) {
         setUnlocalizedName(name);
         setCreativeTab(tab);
         maxStackSize = 1;
@@ -27,7 +27,7 @@ public class ItemHaulerMinecart extends Item {
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
         if (BlockRailBase.func_150051_a(world.getBlock(x, y, z))) {
             if (!world.isRemote) {
-                EntityHaulerMinecart entity = new EntityHaulerMinecart(world, (x + 0.5F), (y + 0.5F), (z + 0.5F));
+                EntityMinecartHauler entity = new EntityMinecartHauler(world, (x + 0.5F), (y + 0.5F), (z + 0.5F));
                 if (stack.hasDisplayName())
                     entity.setMinecartName(stack.getDisplayName());
                 world.spawnEntityInWorld(entity);
@@ -65,7 +65,7 @@ public class ItemHaulerMinecart extends Item {
                 yOffset = -1.0D;
             }
 
-            EntityHaulerMinecart entityModMinecart = new EntityHaulerMinecart(world, spawnX, spawnY + yOffset, spawnZ);
+            EntityMinecartHauler entityModMinecart = new EntityMinecartHauler(world, spawnX, spawnY + yOffset, spawnZ);
             if (stack.hasDisplayName()) entityModMinecart.setMinecartName(stack.getDisplayName());
             world.spawnEntityInWorld(entityModMinecart);
             stack.splitStack(1);

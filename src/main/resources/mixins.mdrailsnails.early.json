@@ -10,5 +10,7 @@
   "server": [
   ],
   "mixins": [
+    "minecraft.MixinBlockRailBase",
+    "minecraft.MixinEntityMinecart"
   ]
 }
