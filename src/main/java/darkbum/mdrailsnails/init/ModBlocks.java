@@ -1,5 +1,6 @@
 package darkbum.mdrailsnails.init;
 
+import darkbum.mdrailsnails.block.itemblock.ItemBlockConductor;
 import darkbum.mdrailsnails.block.itemblock.ItemBlockRail;
 import darkbum.mdrailsnails.block.rails.IModeableRail;
 import net.minecraft.block.*;
@@ -23,6 +24,7 @@ public class ModBlocks {
 
     public static Block dev_block;
     public static Block copper_rail_windlass;
+    public static Block conductor;
     public static Block junction_rail;
     public static Block wye_rail_j;
     public static Block wye_rail_r;
@@ -53,6 +55,7 @@ public class ModBlocks {
 
         dev_block = new BlockDevBlock("dev_block", tab);
         copper_rail_windlass = new BlockCopperRailWindlass("copper_rail_windlass", tab);
+        conductor = new BlockConductor("conductor", tab);
         junction_rail = new BlockJunctionRail("junction_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_junction");
         wye_rail_j = new BlockWyeRail("wye_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_wye_junction");
         wye_rail_r = new BlockWyeRail("wye_rail", null).setBlockTextureName("mdrailsnails:rails/rail_wye_right");
@@ -79,6 +82,7 @@ public class ModBlocks {
 
         registerBlock(dev_block, "dev_block");
 //        registerBlock(copper_rail_windlass, "copper_rail_windlass", enableWindlass);
+        registerBlock(conductor, ItemBlockConductor.class, "conductor");
         registerBlock(junction_rail, ItemBlockRail.class, "junction_rail", enableJunctionRail);
         registerBlock(wye_rail_j, ItemBlockRail.class, "wye_rail_j", enableWyeRail);
         registerBlock(wye_rail_r, ItemBlockRail.class, "wye_rail_r", enableWyeRail);

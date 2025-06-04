@@ -75,4 +75,11 @@ public final class BlockUtils {
         block.setBlockUnbreakable();
         block.setStepSound(soundTypeMetal);
     }
+
+    public static void propertiesConductor(Block block) {
+        block.setHardness(3.0F);
+        block.setResistance(3.0F);
+        block.setStepSound(soundTypeStone);
+        block.setHarvestLevel("pickaxe", 0);
+    }
 }

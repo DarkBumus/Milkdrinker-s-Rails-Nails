@@ -1,7 +1,9 @@
 package darkbum.mdrailsnails.common.proxy;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import darkbum.mdrailsnails.block.render.ConductorRenderer;
 
 /**
  * Client-side proxy class responsible for client-only initializations like custom renderers for blocks and entities.
@@ -11,6 +13,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @since 1.0.0
  */
 public class ClientProxy extends CommonProxy {
+
+    public static int conductorRenderType;
 
     /**
      * Helper method that overrides from CommonProxy and makes sure the renderer methods are only called client-side.
@@ -27,6 +31,9 @@ public class ClientProxy extends CommonProxy {
      * Called during client-side initialization.
      */
     public void setBlockRenderers() {
+        conductorRenderType = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new ConductorRenderer(conductorRenderType));
+
     }
 
     /**

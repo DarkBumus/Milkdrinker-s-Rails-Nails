@@ -6,6 +6,10 @@ itemGroup.mdrn_blocks=Rails&Nails Blocks
 
 # BLOCKS
 
+tile.conductor.name=Conductor
+tile.conductor.tooltip.0=Gives out a redstone signal if a passing cart is identical with a cart at an adjacent side
+tile.conductor.tooltip.1=§cRequires a Detector Rail infront of it to detect passing carts.
+
 tile.junction_rail.name=Junction Rail
 tile.junction_rail.tooltip.0=Carts can pass in both directions simultaneously
 
