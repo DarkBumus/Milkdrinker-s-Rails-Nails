@@ -4,10 +4,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import darkbum.mdrailsnails.MDRailsNails;
 import darkbum.mdrailsnails.creativetab.TabMDRNBlocks;
 import darkbum.mdrailsnails.creativetab.TabMDRNItems;
-import darkbum.mdrailsnails.event.AttackEntityEventHandler;
-import darkbum.mdrailsnails.event.WorldLoadEventHandler;
-import darkbum.mdrailsnails.event.WorldTickHandler;
-import darkbum.mdrailsnails.event.EntityInteractEventHandler;
+import darkbum.mdrailsnails.event.*;
 import darkbum.mdrailsnails.util.GuiHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -66,6 +63,7 @@ public class CommonProxy {
         register(new AttackEntityEventHandler());
         register(new WorldLoadEventHandler());
         register(new WorldTickHandler());
+        register(new MinecartUpdateEventHandler());
     }
 
     /**

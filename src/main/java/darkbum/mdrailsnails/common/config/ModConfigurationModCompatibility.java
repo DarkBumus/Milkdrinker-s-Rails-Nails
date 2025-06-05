@@ -1,7 +1,5 @@
 package darkbum.mdrailsnails.common.config;
 
-import java.io.File;
-
 import net.minecraftforge.common.config.Configuration;
 
 /**

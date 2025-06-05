@@ -45,11 +45,13 @@ public class ModExternalLoader {
      */
     public static void loadEtFuturum() {
         if (!efr) return;
+        etFuturumBlocks.put("slime_block", findBlock("etfuturum", "slime"));
         etFuturumBlocks.put("blast_furnace", findBlock("etfuturum", "blast_furnace"));
         etFuturumBlocks.put("lit_blast_furnace", findBlock("etfuturum", "lit_blast_furnace"));
 
-        etFuturumItems.put("copper_ingot", findItem("etfuturum", "copper_ingot"));
+        etFuturumItems.put("netherite_ingot", findItem("etfuturum", "netherite_ingot"));
         etFuturumItems.put("dye", findItem("etfuturum", "dye"));
+        etFuturumItems.put("copper_ingot", findItem("etfuturum", "copper_ingot"));
     }
 
     /**

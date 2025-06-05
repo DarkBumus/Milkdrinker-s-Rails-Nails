@@ -31,12 +31,13 @@ public class ModConfigurationBlocks {
     // Blocks Config Options
     public static boolean enableWindlass;
     public static int windlassReach;
+    public static boolean enableConductor;
 
     // Rail Blocks Config Options
     public static boolean enableJunctionRail;
     public static boolean enableWyeRail;
-//    public static boolean enableSwitchRail;
-    public static boolean enableSlowdownRail;
+    public static boolean enableSwitchRail;
+    public static int slowdownRailSpeed;
     public static boolean enableOneWayRail;
     public static boolean enableLockingRail;
     public static boolean enableDismountingRail;
@@ -49,6 +50,11 @@ public class ModConfigurationBlocks {
     public static boolean enableDisposingRail;
     public static boolean enableLaunchingRail;
     public static boolean enableCartDislocatingRail;
+    public static boolean enableOneWayDetectorRail;
+    public static boolean enableCartDetectorRail;
+    public static boolean enableSlowdownRail;
+    public static boolean enableHighSpeedRails;
+    public static int highSpeedRailsSpeed;
 
 
     /**
@@ -73,6 +79,14 @@ public class ModConfigurationBlocks {
             1,
             "Regulates the reach (per redstone level) that the windlass reels out."
             + "\n(Setting this to, for example, 3 means that the windlass will provide 3 rails when powered with one level of redstone, 6 with two levels, 9 with three levels, etc.)");
+
+        enableConductor = config.getBoolean(
+            "ß3-enableConductor",
+            categoryNameBlo,
+            true,
+            enableFeatures + "\nConductor"
+            + "\n");
+
 
         config.setCategoryComment(categoryNameBloRai, categoryDescriptionBloRai);
 
@@ -103,29 +117,36 @@ public class ModConfigurationBlocks {
             true,
             enableFeatures + "\nSlowdown Rail"
             + "\n");
+        slowdownRailSpeed = config.getInt(
+            "03-slowdownRailSpeed",
+            categoryNameBloRai,
+            3,
+            1,
+            9,
+            "Regulates the speed penalty of the Slowdown Rail compared to regular rails. 1 = 10%, 9 = 90%");
 
         enableOneWayRail = config.getBoolean(
-            "03-enableOneWayRail",
+            "04-enableOneWayRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nOne-Way Rail"
             + "\n");
 
         enableLockingRail = config.getBoolean(
-            "04-enableLockingRail",
+            "05-enableLockingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nLocking Rail"
             + "\n");
 
         enableDismountingRail = config.getBoolean(
-            "05-enableDismountingRail",
+            "06-enableDismountingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nDismounting Rail"
             + "\n");
         dismountingRailDistance = config.getInt(
-            "06-dismountingRailDistance",
+            "07-dismountingRailDistance",
             categoryNameBloRai,
             1,
             1,
@@ -133,13 +154,13 @@ public class ModConfigurationBlocks {
             "Regulates the distance that the Dismounting Rail drops entities off at");
 
         enableMountingRail = config.getBoolean(
-            "07-enableMountingRail",
+            "08-enableMountingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nMounting Rail"
             + "\n");
         mountingRailDistance = config.getInt(
-            "08-mountingRailDistance",
+            "09-mountingRailDistance",
             categoryNameBloRai,
             2,
             1,
@@ -147,20 +168,20 @@ public class ModConfigurationBlocks {
             "Regulates the distance that the Mounting Rail can pick entities off from");
 
         enableCouplingRail = config.getBoolean(
-            "09-enableCouplingRail",
+            "10-enableCouplingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nCoupling Rail"
             + "\n");
 
         enableSuspendedRail = config.getBoolean(
-            "10-enableSuspendedRail",
+            "11-enableSuspendedRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nSuspended Rail"
             + "\n");
         suspendedRailReach = config.getInt(
-            "11-suspendedRailReach",
+            "12-suspendedRailReach",
             categoryNameBloRai,
             3,
             1,
@@ -168,24 +189,52 @@ public class ModConfigurationBlocks {
             "Regulates the reach of suspended rails, before you can't place any more.");
 
         enableDisposingRail = config.getBoolean(
-            "12-enableDisposingRail",
+            "13-enableDisposingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nDisposing Rail"
             + "\n");
 
         enableLaunchingRail = config.getBoolean(
-            "13-enableLaunchingRail",
+            "14-enableLaunchingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nLaunching Rail"
             + "\n");
 
         enableCartDislocatingRail = config.getBoolean(
-            "14-enableCartDislocatingRail",
+            "15-enableCartDislocatingRail",
             categoryNameBloRai,
             true,
             enableFeatures + "\nCart Dislocating Rail"
             + "\n");
+
+        enableOneWayDetectorRail = config.getBoolean(
+            "16-enableOneWayDetectorRail",
+            categoryNameBloRai,
+            true,
+            enableFeatures + "\nOne-Way Detector Rail"
+            + "\n");
+
+        enableCartDetectorRail = config.getBoolean(
+            "17-enableCartDetectorRail",
+            categoryNameBloRai,
+            true,
+            enableFeatures + "\nCart Detector Rail"
+            + "\n");
+
+        enableHighSpeedRails = config.getBoolean(
+            "18-enableHighSpeedRails",
+            categoryNameBloRai,
+            true,
+            enableFeatures + "\nHigh-Speed Rail" + "\nHigh-Speed Booster Rail" + "\nHigh-Speed Transition Rail"
+            + "\n");
+        highSpeedRailsSpeed = config.getInt(
+            "19-highSpeedRailsSpeed",
+            categoryNameBloRai,
+            3,
+            2,
+            5,
+            "Regulates the speed multiplier of High-Speed Rails compared to regular rails: 2 = 2x, 5 = 5x");
     }
 }

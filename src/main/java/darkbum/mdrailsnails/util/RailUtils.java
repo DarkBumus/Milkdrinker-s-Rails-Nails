@@ -1,5 +1,6 @@
 package darkbum.mdrailsnails.util;
 
+import darkbum.mdrailsnails.block.BlockRailHighSpeedTransition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.entity.Entity;
@@ -79,6 +80,29 @@ public class RailUtils {
 
         ruleValue = Math.max(1, Math.min(ruleValue, 1000));
         return ruleValue * 0.05f;
+    }
+
+    public static void updateHighSpeedState(World world, EntityMinecart cart) {
+        NBTTagCompound data = cart.getEntityData();
+
+        float lastCartSpeed = data.getFloat("LastCartSpeed");
+        float cartSpeed = (float) Math.sqrt(cart.motionX * cart.motionX + cart.motionZ * cart.motionZ);
+        data.setFloat("LastCartSpeed", cartSpeed);
+
+        float maxAllowedSpeed = getMinecartSpeedFromRules(world);
+        float graceFactor = 1.4f;
+        float highSpeedThreshold = maxAllowedSpeed * graceFactor;
+
+        boolean wasOverHighSpeed = lastCartSpeed > highSpeedThreshold || cartSpeed > highSpeedThreshold;
+        boolean wasOverNormal = lastCartSpeed > maxAllowedSpeed || cartSpeed > maxAllowedSpeed;
+
+        if (wasOverHighSpeed) {
+            data.setString("SpeedState", "HIGHSPEED");
+        } else if (wasOverNormal) {
+            data.setString("SpeedState", "WARNING");
+        } else {
+            data.setString("SpeedState", "NORMAL");
+        }
     }
 
     /*======================================== JUNCTION RAIL UTIL =====================================*/
@@ -585,5 +609,255 @@ public class RailUtils {
             }
         }
         return stack.stackSize > 0 ? stack : null;
+    }
+
+    /*======================================== ONE-WAY DETECTOR RAIL UTILS =====================================*/
+
+    public static void handleOneWayCartDetectingBehavior(World world, EntityMinecart cart, int x, int y, int z) {
+        Block block = world.getBlock(x, y, z);
+        int meta = world.getBlockMetadata(x, y, z);
+        boolean shouldActivate = isActivated(cart, block, meta);
+
+        if (shouldActivate) {
+            world.setBlockMetadataWithNotify(x, y, z, meta | 8, 3);
+            world.notifyBlocksOfNeighborChange(x, y, z, block);
+            world.notifyBlocksOfNeighborChange(x, y - 1, z, block);
+            world.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
+
+            world.scheduleBlockUpdate(x, y, z, block, 20);
+            world.func_147453_f(x, y, z, block);
+        }
+    }
+
+    private static boolean isActivated(EntityMinecart cart, Block block, int meta) {
+        boolean shouldActivate = false;
+
+        double motionX = cart.motionX;
+        double motionZ = cart.motionZ;
+
+        if (block == one_way_detector_rail_r) {
+            if ((meta == 0 || meta == 4 || meta == 5) && motionZ < 0) {
+                shouldActivate = true;
+            } else if ((meta == 1 || meta == 2 || meta == 3) && motionX > 0) {
+                shouldActivate = true;
+            }
+        }
+
+        if (block == one_way_detector_rail_l) {
+            if ((meta == 0 || meta == 4 || meta == 5) && motionZ > 0) {
+                shouldActivate = true;
+            } else if ((meta == 1 || meta == 2 || meta == 3) && motionX < 0) {
+                shouldActivate = true;
+            }
+        }
+        return shouldActivate;
+    }
+
+    /*======================================== CART DETECTOR RAIL UTIL =====================================*/
+
+    public static void handleCartTypeDetectingBehavior(World world, EntityMinecart cart, int x, int y, int z) {
+        Block block = world.getBlock(x, y, z);
+        int meta = world.getBlockMetadata(x, y, z);
+
+        Class<? extends EntityMinecart> targetClass = cart.getClass();
+
+        int[][] offsets = {
+            { 1,  0,  0},
+            {-1,  0,  0},
+            { 0,  1,  0},
+            { 0, -1,  0},
+            { 0,  0,  1},
+            { 0,  0, -1}
+        };
+
+        boolean foundSameType = false;
+
+        for (int[] offset : offsets) {
+            int dx = x + offset[0];
+            int dy = y + offset[1];
+            int dz = z + offset[2];
+
+            AxisAlignedBB box = AxisAlignedBB.getBoundingBox(dx, dy, dz, dx + 1, dy + 1, dz + 1);
+            List<EntityMinecart> cartsInBlock = world.getEntitiesWithinAABB(EntityMinecart.class, box);
+
+            for (EntityMinecart other : cartsInBlock) {
+                if (other != cart && other.getClass() == targetClass) {
+                    foundSameType = true;
+                    break;
+                }
+            }
+
+            if (foundSameType) break;
+        }
+
+        if (foundSameType && (meta & 8) == 0) {
+            world.setBlockMetadataWithNotify(x, y, z, meta | 8, 3);
+            world.notifyBlocksOfNeighborChange(x, y, z, block);
+            world.notifyBlocksOfNeighborChange(x, y - 1, z, block);
+            world.markBlockRangeForRenderUpdate(x, y, z, x, y, z);
+            world.scheduleBlockUpdate(x, y, z, block, 20);
+            world.func_147453_f(x, y, z, block);
+        }
+    }
+
+    /*======================================== BOOSTER RAIL UTILS =====================================*/
+
+    public static void handleBoostingCartBehavior(World world, EntityMinecart cart, int x, int y, int z) {
+        Block block = world.getBlock(x, y, z);
+        if (!(block instanceof BlockRailBase railBlock)) {
+            return;
+        }
+
+        int railShape = railBlock.getBasicRailMetadata(world, cart, x, y, z) & 0x7;
+        boolean powered = (world.getBlockMetadata(x, y, z) & 0x8) != 0;
+        double maxSpeed = railBlock.getRailMaxSpeed(world, cart, y, x, z);
+
+        applyBoost(world, cart, x, y, z, railShape, maxSpeed, powered);
+    }
+
+    public static void applyBoost(World world, EntityMinecart cart, int x, int y, int z, int railShape, double maxSpeed, boolean powered) {
+        double directionX = 0.0D;
+        double directionZ = switch (railShape) {
+            case 0 -> {
+                directionX = 0.0D;
+                yield 1.0D;
+            }
+            case 1 -> {
+                directionX = 1.0D;
+                yield 0.0D;
+            }
+            case 2 -> {
+                directionX = 1.0D;
+                yield -1.0D;
+            }
+            case 3 -> {
+                directionX = -1.0D;
+                yield -1.0D;
+            }
+            case 4 -> {
+                directionX = 1.0D;
+                yield 1.0D;
+            }
+            case 5 -> {
+                directionX = -1.0D;
+                yield 1.0D;
+            }
+            case 6, 7 -> {
+                directionX = railShape == 6 ? 1.0D : -1.0D;
+                yield 0.0D;
+            }
+            default -> 0.0D;
+        };
+
+        double directionLength = Math.sqrt(directionX * directionX + directionZ * directionZ);
+        double cartDirectionDot = cart.motionX * directionX + cart.motionZ * directionZ;
+
+        if (cartDirectionDot < 0.0D) {
+            directionX = -directionX;
+            directionZ = -directionZ;
+        }
+
+        double cartSpeed = Math.sqrt(cart.motionX * cart.motionX + cart.motionZ * cart.motionZ);
+        if (cartSpeed > maxSpeed) {
+            cartSpeed = maxSpeed;
+        }
+
+        cart.motionX = cartSpeed * directionX / directionLength;
+        cart.motionZ = cartSpeed * directionZ / directionLength;
+
+        if (powered) {
+            double boostedSpeed = Math.sqrt(cart.motionX * cart.motionX + cart.motionZ * cart.motionZ);
+            if (boostedSpeed > 0.01D) {
+                double boostAmount = 0.06D;
+                cart.motionX += cart.motionX / boostedSpeed * boostAmount;
+                cart.motionZ += cart.motionZ / boostedSpeed * boostAmount;
+
+                double newSpeed = Math.sqrt(cart.motionX * cart.motionX + cart.motionZ * cart.motionZ);
+                if (newSpeed > maxSpeed) {
+                    double scale = maxSpeed / newSpeed;
+                    cart.motionX *= scale;
+                    cart.motionZ *= scale;
+                }
+            } else if (railShape == 1) {
+                if (world.getBlock(x - 1, y, z).isNormalCube()) {
+                    cart.motionX = 0.02D;
+                } else if (world.getBlock(x + 1, y, z).isNormalCube()) {
+                    cart.motionX = -0.02D;
+                }
+            } else if (railShape == 0) {
+                if (world.getBlock(x, y, z - 1).isNormalCube()) {
+                    cart.motionZ = 0.02D;
+                } else if (world.getBlock(x, y, z + 1).isNormalCube()) {
+                    cart.motionZ = -0.02D;
+                }
+            }
+        } else {
+            cart.motionX = 0.0D;
+            cart.motionY = 0.0D;
+            cart.motionZ = 0.0D;
+        }
+
+        cart.setVelocity(cart.motionX, cart.motionY, cart.motionZ);
+    }
+
+    /*======================================== HIGH-SPEED TRANSITION RAIL UTIL =====================================*/
+
+    public static void handleTransitioningCartBehavior(World world, EntityMinecart cart, int x, int y, int z) {
+        Block block = world.getBlock(x, y, z);
+        if (!(block instanceof BlockRailBase railBlock)) {
+            return;
+        }
+
+        int meta = world.getBlockMetadata(x, y, z);
+        int railShape = railBlock.getBasicRailMetadata(world, cart, x, y, z) & 0x7;
+        boolean powered = (meta & 0x8) != 0;
+
+        float normalSpeed = getMinecartSpeedFromRules(world);
+        float highSpeed = block instanceof BlockRailHighSpeedTransition
+            ? ((BlockRailHighSpeedTransition) block).getRailMaxSpeed(world, cart, y, x, z)
+            : normalSpeed * (highSpeedRailsSpeed * 1.0f);
+
+        double motionX = cart.motionX;
+        double motionZ = cart.motionZ;
+
+        float maxSpeed;
+
+        if (block == high_speed_transition_rail_r) {
+            if (meta == 8 || meta == 12 || meta == 13) {
+                if (motionZ < 0) {
+                    maxSpeed = highSpeed;
+                } else {
+                    maxSpeed = normalSpeed;
+                }
+            } else if (meta == 9 || meta == 10 || meta == 11) {
+                if (motionX > 0) {
+                    maxSpeed = highSpeed;
+                } else {
+                    maxSpeed = normalSpeed;
+                }
+            } else {
+                return;
+            }
+        } else if (block == high_speed_transition_rail_l) {
+            if (meta == 8 || meta == 12 || meta == 13) {
+                if (motionZ > 0) {
+                    maxSpeed = highSpeed;
+                } else {
+                    maxSpeed = normalSpeed;
+                }
+            } else if (meta == 9 || meta == 10 || meta == 11) {
+                if (motionX < 0) {
+                    maxSpeed = highSpeed;
+                } else {
+                    maxSpeed = normalSpeed;
+                }
+            } else {
+                return;
+            }
+        } else {
+            return;
+        }
+
+        applyBoost(world, cart, x, y, z, railShape, maxSpeed, powered);
     }
 }

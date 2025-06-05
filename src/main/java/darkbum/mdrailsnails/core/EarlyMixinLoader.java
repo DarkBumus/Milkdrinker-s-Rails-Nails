@@ -22,7 +22,6 @@ public class EarlyMixinLoader implements IEarlyMixinLoader, IFMLLoadingPlugin {
     public List<String> getMixins(Set<String> loadedCoreMods) {
         final List<String> mixins = new ArrayList<>();
         mixins.add("minecraft.MixinBlockRailBase");
-        mixins.add("minecraft.MixinEntityMinecart");
         return mixins;
     }
 

@@ -6,6 +6,8 @@ itemGroup.mdrn_blocks=Rails&Nails Blocks
 
 # BLOCKS
 
+tile.goldenRail.name=Booster Rail
+
 tile.conductor.name=Conductor
 tile.conductor.tooltip.0=Gives out a redstone signal if a passing cart is identical with a cart at an adjacent side
 tile.conductor.tooltip.1=§cRequires a Detector Rail infront of it to detect passing carts.
@@ -21,8 +23,8 @@ tile.wye_rail.mess.r=§9Wye Rail§f: Right Way Mode
 tile.wye_rail.mess.l=§9Wye Rail§f: Left Way Mode
 
 tile.slowdown_rail.name=Slowdown Rail
-tile.slowdown_rail.tooltip_0=Carts get slowed to 30% of the normal speed
-tile.slowdown_rail.tooltip_1=§c- Apply Redstone to enable -
+tile.slowdown_rail.tooltip.0=Carts get slowed compared to the normal speed
+tile.slowdown_rail.tooltip.1=§c- Apply Redstone to enable -
 
 tile.one_way_rail.name=One-Way Rail
 tile.one_way_rail.tooltip.0=Carts can only pass in one direction
@@ -82,6 +84,32 @@ tile.launching_rail.tooltip.1=§c- Apply Redstone to enable -
 tile.cart_dislocating_rail.name=Cart Dislocating Rail
 tile.cart_dislocating_rail.tooltip.0=Removes a passing cart and stores it in an inventory below
 tile.cart_dislocating_rail.tooltip.1=§c- Apply Redstone to enable -
+
+tile.one_way_detector_rail.name=One-Way Detector Rail
+tile.one_way_detector_rail.tooltip.0=Gives out a redstone signal if a cart passes in the right direction
+tile.one_way_detector_rail.tooltip.1=§9- Right-click with Railway Lever to change direction -
+tile.one_way_detector_rail.mess.r=§9One-Way Detector Rail§f: South>North/West>East Mode
+tile.one_way_detector_rail.mess.l=§9One-Way Detector Rail§f: North>South/East>West Mode
+
+tile.cart_detector_rail.name=Cart Detector Rail
+tile.cart_detector_rail.tooltip.0=Gives out a redstone signal if a passing cart is identical with a cart next to it
+
+tile.high_speed_rail.name=High-Speed Rail
+tile.high_speed_rail.tooltip.0=§4§lDangerous!
+tile.high_speed_rail.tooltip.1=Allows carts to traverse at much higher speed than normal
+
+tile.high_speed_booster_rail.name=High-Speed Booster Rail
+tile.high_speed_booster_rail.tooltip.0=§4§lDangerous!
+tile.high_speed_booster_rail.tooltip.1=Speeds up carts to a much higher speed than normal
+tile.high_speed_booster_rail.tooltip.2=§c- Apply Redstone to enable -
+
+tile.high_speed_transition_rail.name=High-Speed Transition Rail
+tile.high_speed_transition_rail.tooltip.0=§4§lDangerous!
+tile.high_speed_transition_rail.tooltip.1=Transitions carts from high to normal speed and vice-versa
+tile.high_speed_transition_rail.tooltip.2=§9- Right-click with Railway Lever to change direction -
+tile.high_speed_transition_rail.tooltip.3=§c- Apply Redstone to enable -
+tile.high_speed_transition_rail.mess.r=§9High-Speed Transition Rail§f: South>North/West>East Mode
+tile.high_speed_transition_rail.mess.l=§9High-Speed Transition Rail§f: North>South/East>West Mode
 
 
 # ITEMS

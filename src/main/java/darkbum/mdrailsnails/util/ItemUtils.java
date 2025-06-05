@@ -35,7 +35,8 @@ import static org.lwjgl.input.Keyboard.*;
 public final class ItemUtils {
 
     private static final Set<Block> NON_POWERED_RAILS = new HashSet<>(Arrays.asList(
-        rail
+        rail,
+        high_speed_rail
     ));
 
     private static final Set<Block> POWERED_RAILS = new HashSet<>(Arrays.asList(
@@ -55,7 +56,16 @@ public final class ItemUtils {
         coupling_rail,
         decoupling_rail,
         suspended_rail,
-        cart_dislocating_rail
+        disposing_rail,
+        launching_rail,
+        cart_dislocating_rail,
+        one_way_detector_rail_r,
+        one_way_detector_rail_l,
+        cart_detector_rail,
+        slowdown_rail,
+        high_speed_booster_rail,
+        high_speed_transition_rail_r,
+        high_speed_transition_rail_l
     ));
 
     private static final Set<Block> OTHER_RAILS = new HashSet<>(Arrays.asList(

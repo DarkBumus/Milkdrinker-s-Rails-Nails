@@ -31,6 +31,8 @@ public class NEIConfig implements IConfigureNEI {
         API.hideItem(new ItemStack(locking_release_rail_l));
         API.hideItem(new ItemStack(dismounting_rail_nw));
         API.hideItem(new ItemStack(decoupling_rail));
+        API.hideItem(new ItemStack(one_way_detector_rail_l));
+        API.hideItem(new ItemStack(high_speed_transition_rail_l));
     }
 
     /**

@@ -2,7 +2,6 @@ package darkbum.mdrailsnails.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import darkbum.mdrailsnails.block.rails.IModeableRail;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRail;
 import net.minecraft.client.renderer.texture.IIconRegister;

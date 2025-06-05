@@ -33,11 +33,10 @@ public final class BlockUtils {
         int direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
         meta = switch (direction) {
-            case 0 -> 9;
             case 1 -> 6;
             case 2 -> 7;
             case 3 -> 8;
-            default -> 9; //Fallback
+            default -> 9;
         };
         world.setBlockMetadataWithNotify(x, y, z, meta, 3);
         world.markBlockForUpdate(x, y, z);
@@ -57,13 +56,6 @@ public final class BlockUtils {
      *
      * @param block The block to set the properties for.
      */
-    public static void propertiesTechnicalRails(Block block) {
-        block.setHardness(0.7f);
-        block.setResistance(0.7f);
-        block.setStepSound(soundTypeMetal);
-        block.setHarvestLevel("pickaxe", 0);
-    }
-
     public static void propertiesWindlass(Block block) {
         block.setHardness(2.5f);
         block.setResistance(2.5f);
@@ -81,5 +73,19 @@ public final class BlockUtils {
         block.setResistance(3.0F);
         block.setStepSound(soundTypeStone);
         block.setHarvestLevel("pickaxe", 0);
+    }
+
+    public static void propertiesTechnicalRails(Block block) {
+        block.setHardness(0.7f);
+        block.setResistance(0.7f);
+        block.setStepSound(soundTypeMetal);
+        block.setHarvestLevel("pickaxe", 0);
+    }
+
+    public static void propertiesHighSpeedRails(Block block) {
+        block.setHardness(0.7f);
+        block.setResistance(2000.0f);
+        block.setStepSound(soundTypeMetal);
+        block.setHarvestLevel("pickaxe", 3);
     }
 }

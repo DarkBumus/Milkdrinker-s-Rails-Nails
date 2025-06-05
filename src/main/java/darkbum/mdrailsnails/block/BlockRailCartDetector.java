@@ -1,14 +1,11 @@
 package darkbum.mdrailsnails.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import darkbum.mdrailsnails.block.rails.ISuspendedRail;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRail;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.BlockRailDetector;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -16,38 +13,21 @@ import java.util.Random;
 import static darkbum.mdrailsnails.util.BlockUtils.*;
 import static darkbum.mdrailsnails.util.RailUtils.*;
 
-public class BlockRailSuspended extends BlockRail implements ISuspendedRail {
+public class BlockRailCartDetector extends BlockRailDetector implements ISuspendedRail {
 
     private final int suspendedLength;
 
-    public BlockRailSuspended(String name, CreativeTabs tab, int suspendedLength) {
+    public BlockRailCartDetector(String name, CreativeTabs tab) {
         super();
-        this.suspendedLength = suspendedLength;
+        this.suspendedLength = 1;
         setBlockName(name);
         setCreativeTab(tab);
         propertiesTechnicalRails(this);
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int meta) {
-        return blockIcon;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister icon) {
-        blockIcon = icon.registerIcon(this.getTextureName());
-    }
-
-    @Override
-    public boolean isFlexibleRail(IBlockAccess world, int x, int y, int z) {
-        return false;
-    }
-
-    @Override
-    public boolean canMakeSlopes(IBlockAccess world, int x, int y, int z) {
-        return false;
+    public void onMinecartPass(World world, EntityMinecart cart, int x, int y, int z) {
+        handleCartTypeDetectingBehavior(world, cart, x, y, z);
     }
 
     @Override
@@ -63,13 +43,16 @@ public class BlockRailSuspended extends BlockRail implements ISuspendedRail {
             }
         }
     }
-
     @Override
     public void updateTick(World world, int x, int y, int z, Random rand) {
+        super.updateTick(world, x, y, z, rand);
         if (isStillValid(world, x, y, z, getSuspensionRange())) {
             handleSuspendedDestruction(world, x, y, z, this);
         }
     }
+
+    @Override
+    public void onEntityCollidedWithBlock(World worldIn, int x, int y, int z, Entity entityIn) {}
 
     @Override
     public int getSuspensionRange() {

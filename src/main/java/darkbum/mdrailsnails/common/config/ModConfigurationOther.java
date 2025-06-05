@@ -1,12 +1,6 @@
 package darkbum.mdrailsnails.common.config;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
-
 import net.minecraftforge.common.config.Configuration;
-
-import darkbum.mdrailsnails.MDRailsNails;
 
 /**
  * Handles configuration settings that are marked to be phased out in future versions of Milkdrinker's Rails&Nails.

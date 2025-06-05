@@ -10,7 +10,6 @@ import darkbum.mdrailsnails.init.recipes.ModRemovedRecipes;
 import darkbum.mdrailsnails.init.recipes.ModShapedRecipes;
 import darkbum.mdrailsnails.init.recipes.ModShapelessRecipes;
 import darkbum.mdrailsnails.init.recipes.ModSmeltingRecipes;
-import net.minecraft.entity.item.EntityMinecart;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +26,7 @@ import darkbum.mdrailsnails.common.config.ModConfigurationBase;
 import static cpw.mods.fml.common.Loader.isModLoaded;
 import static cpw.mods.fml.common.registry.GameRegistry.*;
 import static darkbum.mdrailsnails.common.config.ModConfigurationEntities.*;
+import static net.minecraft.entity.item.EntityMinecart.*;
 import static net.minecraft.util.EnumChatFormatting.*;
 
 /**
@@ -86,7 +86,7 @@ public class MDRailsNails {
         event.getModMetadata().name = GOLD + NAME + WHITE;
         event.getModMetadata().version = YELLOW + VERSION;
         event.getModMetadata().credits = AQUA
-            + "Thanks to contributor Jack";
+            + "Thanks to contributor Jack and Roadhog";
 
         // Load and initialize configuration files
         File configDir = new File(event.getModConfigurationDirectory(), "mdrailsnails");
@@ -102,7 +102,7 @@ public class MDRailsNails {
         // Register miscellaneous registries and handlers
         registerFuelHandler(new ModFuelHandler());
         ModFlammabilityHandler.init();
-        if (enableBetaMinecartBoosting) EntityMinecart.setCollisionHandler(new MinecartCollider());
+        if (enableBetaMinecartBoosting) setCollisionHandler(new MinecartCollider());
 
         proxy.preInit(event);
 

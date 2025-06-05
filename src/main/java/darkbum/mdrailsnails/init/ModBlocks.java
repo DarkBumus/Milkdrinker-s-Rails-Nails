@@ -24,12 +24,12 @@ public class ModBlocks {
 
     public static Block dev_block;
     public static Block copper_rail_windlass;
+    public static Block copper_rail;
     public static Block conductor;
     public static Block junction_rail;
     public static Block wye_rail_j;
     public static Block wye_rail_r;
     public static Block wye_rail_l;
-    public static Block slowdown_rail;
     public static Block one_way_rail_r;
     public static Block one_way_rail_l;
     public static Block locking_rail;
@@ -43,11 +43,18 @@ public class ModBlocks {
     public static Block coupling_rail;
     public static Block decoupling_rail;
     public static Block suspended_rail;
-    public static Block copper_rail;
     public static Block disposing_rail;
     public static Block launching_rail;
     public static Block cart_dislocating_rail;
-
+    public static Block one_way_detector_rail_r;
+    public static Block one_way_detector_rail_l;
+    public static Block cart_detector_rail;
+    public static Block chain_lift_rail;
+    public static Block slowdown_rail;
+    public static Block high_speed_rail;
+    public static Block high_speed_booster_rail;
+    public static Block high_speed_transition_rail_r;
+    public static Block high_speed_transition_rail_l;
     /**
      * Initializes and registers all blocks.
      */
@@ -55,12 +62,12 @@ public class ModBlocks {
 
         dev_block = new BlockDevBlock("dev_block", tab);
         copper_rail_windlass = new BlockCopperRailWindlass("copper_rail_windlass", tab);
+        copper_rail = new BlockRailCopper("copper_rail", null, 1000).setBlockTextureName("mdrailsnails:rails/rail_copper");
         conductor = new BlockConductor("conductor", tab);
         junction_rail = new BlockJunctionRail("junction_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_junction");
         wye_rail_j = new BlockWyeRail("wye_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_wye_junction");
         wye_rail_r = new BlockWyeRail("wye_rail", null).setBlockTextureName("mdrailsnails:rails/rail_wye_right");
         wye_rail_l = new BlockWyeRail("wye_rail", null).setBlockTextureName("mdrailsnails:rails/rail_wye_left");
-        slowdown_rail = new BlockRailSlowdown("slowdown_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_slowdown");
         one_way_rail_r = new BlockRailOneWay("one_way_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_oneway_right");
         one_way_rail_l = new BlockRailOneWay("one_way_rail", null).setBlockTextureName("mdrailsnails:rails/rail_oneway_left");
         locking_rail = new BlockRailLocking("locking_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_locking");
@@ -74,20 +81,27 @@ public class ModBlocks {
         coupling_rail = new BlockRailCoupling("coupling_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_coupling");
         decoupling_rail = new BlockRailCoupling("coupling_rail", null).setBlockTextureName("mdrailsnails:rails/rail_decoupling");
         suspended_rail = new BlockRailSuspended("suspended_rail", tab, suspendedRailReach).setBlockTextureName("mdrailsnails:rails/rail_suspended");
-        copper_rail = new BlockRailCopper("copper_rail", null, 1000).setBlockTextureName("mdrailsnails:rails/rail_copper");
         disposing_rail = new BlockRailDisposing("disposing_rail", tab, suspendedRailReach).setBlockTextureName("mdrailsnails:rails/rail_disposing");
         launching_rail = new BlockRailLaunching("launching_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_launching");
         cart_dislocating_rail = new BlockRailCartDislocating("cart_dislocating_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_cart_dislocating");
+        one_way_detector_rail_r = new BlockRailOneWayDetector("one_way_detector_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_oneway_detector_right");
+        one_way_detector_rail_l = new BlockRailOneWayDetector("one_way_detector_rail", null).setBlockTextureName("mdrailsnails:rails/rail_oneway_detector_left");
+        cart_detector_rail = new BlockRailCartDetector("cart_detector_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_cart_detector");
+        slowdown_rail = new BlockRailSlowdown("slowdown_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_slowdown");
+        high_speed_rail = new BlockRailHighSpeed("high_speed_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_high_speed");
+        high_speed_booster_rail = new BlockRailHighSpeedBooster("high_speed_booster_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_high_speed_booster");
+        high_speed_transition_rail_r = new BlockRailHighSpeedTransition("high_speed_transition_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_high_speed_transition_right");
+        high_speed_transition_rail_l = new BlockRailHighSpeedTransition("high_speed_transition_rail", null).setBlockTextureName("mdrailsnails:rails/rail_high_speed_transition_left");
 
 
         registerBlock(dev_block, "dev_block");
 //        registerBlock(copper_rail_windlass, "copper_rail_windlass", enableWindlass);
-        registerBlock(conductor, ItemBlockConductor.class, "conductor");
+//        registerBlock(copper_rail, "copper_rail", enableWindlass);
+//        registerBlock(conductor, ItemBlockConductor.class, "conductor", enableConductor);
         registerBlock(junction_rail, ItemBlockRail.class, "junction_rail", enableJunctionRail);
         registerBlock(wye_rail_j, ItemBlockRail.class, "wye_rail_j", enableWyeRail);
         registerBlock(wye_rail_r, ItemBlockRail.class, "wye_rail_r", enableWyeRail);
         registerBlock(wye_rail_l, ItemBlockRail.class, "wye_rail_l", enableWyeRail);
-        registerBlock(slowdown_rail, ItemBlockRail.class, "slowdown_rail", enableSlowdownRail);
         registerBlock(one_way_rail_r, ItemBlockRail.class, "one_way_rail_r", enableOneWayRail);
         registerBlock(one_way_rail_l, ItemBlockRail.class, "one_way_rail_l", enableOneWayRail);
         registerBlock(locking_rail, ItemBlockRail.class, "locking_rail", enableLockingRail);
@@ -101,10 +115,17 @@ public class ModBlocks {
         registerBlock(coupling_rail, ItemBlockRail.class, "coupling_rail", enableCouplingRail);
         registerBlock(decoupling_rail, ItemBlockRail.class, "decoupling_rail", enableCouplingRail);
         registerBlock(suspended_rail, ItemBlockRail.class, "suspended_rail", enableSuspendedRail);
-//        registerBlock(copper_rail, "copper_rail", enableWindlass);
         registerBlock(disposing_rail, ItemBlockRail.class, "disposing_rail", enableDisposingRail);
         registerBlock(launching_rail, ItemBlockRail.class, "launching_rail", enableLaunchingRail);
         registerBlock(cart_dislocating_rail, ItemBlockRail.class, "cart_dislocating_rail", enableCartDislocatingRail);
+        registerBlock(one_way_detector_rail_r, ItemBlockRail.class, "one_way_detector_rail_r", enableOneWayDetectorRail);
+        registerBlock(one_way_detector_rail_l, ItemBlockRail.class, "one_way_detector_rail_l", enableOneWayDetectorRail);
+        registerBlock(cart_detector_rail, ItemBlockRail.class, "cart_detector_rail", enableCartDetectorRail);
+        registerBlock(slowdown_rail, ItemBlockRail.class, "slowdown_rail", enableSlowdownRail);
+        registerBlock(high_speed_rail, ItemBlockRail.class, "high_speed_rail", enableHighSpeedRails);
+        registerBlock(high_speed_booster_rail, ItemBlockRail.class, "high_speed_booster_rail", enableHighSpeedRails);
+        registerBlock(high_speed_transition_rail_r, ItemBlockRail.class, "high_speed_transition_rail_r", enableHighSpeedRails);
+        registerBlock(high_speed_transition_rail_l, ItemBlockRail.class, "high_speed_transition_rail_l", enableHighSpeedRails);
 
 
         ((IModeableRail) wye_rail_j).setTurnedBlock(wye_rail_r);
@@ -126,6 +147,12 @@ public class ModBlocks {
         ((IModeableRail) coupling_rail).setTurnedBlock(decoupling_rail);
         ((IModeableRail) decoupling_rail).setTurnedBlock(coupling_rail);
 
+        ((IModeableRail) one_way_detector_rail_r).setTurnedBlock(one_way_detector_rail_l);
+        ((IModeableRail) one_way_detector_rail_l).setTurnedBlock(one_way_detector_rail_r);
+
+        ((IModeableRail) high_speed_transition_rail_r).setTurnedBlock(high_speed_transition_rail_l);
+        ((IModeableRail) high_speed_transition_rail_l).setTurnedBlock(high_speed_transition_rail_r);
+
 
         ((IModeableRail) wye_rail_j).setModeChangeMessageKey("tile.wye_rail.mess.j");
         ((IModeableRail) wye_rail_r).setModeChangeMessageKey("tile.wye_rail.mess.r");
@@ -145,5 +172,11 @@ public class ModBlocks {
 
         ((IModeableRail) coupling_rail).setModeChangeMessageKey("tile.coupling_rail.mess.base");
         ((IModeableRail) decoupling_rail).setModeChangeMessageKey("tile.coupling_rail.mess.de");
+
+        ((IModeableRail) one_way_detector_rail_r).setModeChangeMessageKey("tile.one_way_detector_rail.mess.r");
+        ((IModeableRail) one_way_detector_rail_l).setModeChangeMessageKey("tile.one_way_detector_rail.mess.l");
+
+        ((IModeableRail) high_speed_transition_rail_r).setModeChangeMessageKey("tile.high_speed_transition_rail.mess.r");
+        ((IModeableRail) high_speed_transition_rail_l).setModeChangeMessageKey("tile.high_speed_transition_rail.mess.l");
     }
 }
