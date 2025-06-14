@@ -30,6 +30,9 @@ public class ModConfigurationEntities {
 
     public static boolean enableHaulerMinecart;
 
+    public static boolean enableModernEntities;
+    public static boolean enableEarthEntities;
+
 
     /**
      * Initializes the entity configuration settings by reading values from the provided configuration file.
@@ -52,5 +55,16 @@ public class ModConfigurationEntities {
             enableFeatures
             + "\nHauler Minecart"
             + "\n");
+
+        enableModernEntities = config.getBoolean(
+            "03-enableModernEntities",
+            categoryNameEnt,
+            true,
+            enableFeatures + "TESTING ENTITIES, IGNORE!");
+        enableEarthEntities = config.getBoolean(
+            "04-enableEarthEntities",
+            categoryNameEnt,
+            true,
+            enableFeatures + "TESTING ENTITIES, IGNORE!");
     }
 }

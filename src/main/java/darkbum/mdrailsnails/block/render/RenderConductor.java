@@ -1,14 +1,15 @@
 package darkbum.mdrailsnails.block.render;
 
-import ganymedes01.etfuturum.client.renderer.block.BlockModelBase;
+import darkbum.mdrailsnails.util.BlockModelBase;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 
 import static net.minecraft.block.BlockPistonBase.*;
 
-public class ConductorRenderer extends BlockModelBase {
-    public ConductorRenderer(int modelID) {
+public class RenderConductor extends BlockModelBase {
+
+    public RenderConductor(int modelID) {
         super(modelID);
     }
 

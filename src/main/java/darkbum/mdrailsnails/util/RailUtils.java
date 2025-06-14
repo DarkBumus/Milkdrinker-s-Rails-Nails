@@ -1,5 +1,6 @@
 package darkbum.mdrailsnails.util;
 
+import darkbum.mdrailsnails.MDRailsNails;
 import darkbum.mdrailsnails.block.BlockRailHighSpeedTransition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRailBase;
@@ -100,6 +101,8 @@ public class RailUtils {
             data.setString("SpeedState", "HIGHSPEED");
         } else if (wasOverNormal) {
             data.setString("SpeedState", "WARNING");
+            data.setInteger("WarningTicksLeft", 10);
+            data.setInteger("WarningCooldown", 0);
         } else {
             data.setString("SpeedState", "NORMAL");
         }
@@ -712,10 +715,10 @@ public class RailUtils {
         boolean powered = (world.getBlockMetadata(x, y, z) & 0x8) != 0;
         double maxSpeed = railBlock.getRailMaxSpeed(world, cart, y, x, z);
 
-        applyBoost(world, cart, x, y, z, railShape, maxSpeed, powered);
+        applyBoost(world, cart, x, y, z, railShape, maxSpeed, powered, 0.06D);
     }
 
-    public static void applyBoost(World world, EntityMinecart cart, int x, int y, int z, int railShape, double maxSpeed, boolean powered) {
+    public static void applyBoost(World world, EntityMinecart cart, int x, int y, int z, int railShape, double maxSpeed, boolean powered, double boostAmount) {
         double directionX = 0.0D;
         double directionZ = switch (railShape) {
             case 0 -> {
@@ -768,7 +771,6 @@ public class RailUtils {
         if (powered) {
             double boostedSpeed = Math.sqrt(cart.motionX * cart.motionX + cart.motionZ * cart.motionZ);
             if (boostedSpeed > 0.01D) {
-                double boostAmount = 0.06D;
                 cart.motionX += cart.motionX / boostedSpeed * boostAmount;
                 cart.motionZ += cart.motionZ / boostedSpeed * boostAmount;
 
@@ -819,45 +821,48 @@ public class RailUtils {
 
         double motionX = cart.motionX;
         double motionZ = cart.motionZ;
+        double currentSpeed = Math.sqrt(motionX * motionX + motionZ * motionZ);
 
-        float maxSpeed;
+        Float targetSpeed = null;
 
         if (block == high_speed_transition_rail_r) {
             if (meta == 8 || meta == 12 || meta == 13) {
-                if (motionZ < 0) {
-                    maxSpeed = highSpeed;
-                } else {
-                    maxSpeed = normalSpeed;
-                }
+                targetSpeed = (motionZ < 0) ? highSpeed : normalSpeed;
             } else if (meta == 9 || meta == 10 || meta == 11) {
-                if (motionX > 0) {
-                    maxSpeed = highSpeed;
-                } else {
-                    maxSpeed = normalSpeed;
-                }
-            } else {
-                return;
+                targetSpeed = (motionX > 0) ? highSpeed : normalSpeed;
             }
         } else if (block == high_speed_transition_rail_l) {
             if (meta == 8 || meta == 12 || meta == 13) {
-                if (motionZ > 0) {
-                    maxSpeed = highSpeed;
-                } else {
-                    maxSpeed = normalSpeed;
-                }
+                targetSpeed = (motionZ > 0) ? highSpeed : normalSpeed;
             } else if (meta == 9 || meta == 10 || meta == 11) {
-                if (motionX < 0) {
-                    maxSpeed = highSpeed;
-                } else {
-                    maxSpeed = normalSpeed;
-                }
-            } else {
+                targetSpeed = (motionX < 0) ? highSpeed : normalSpeed;
+            }
+            if (!powered) {
+                cart.motionX = 0.0D;
+                cart.motionY = 0.0D;
+                cart.motionZ = 0.0D;
                 return;
             }
-        } else {
+        }
+
+        if (targetSpeed == null) {
             return;
         }
 
-        applyBoost(world, cart, x, y, z, railShape, maxSpeed, powered);
+        double speedDifference = targetSpeed - currentSpeed;
+
+        double boostAmount = (highSpeedRailsSpeed <= 2) ? 0.06D : (highSpeedRailsSpeed == 3) ? 0.13D : 0.30D;
+        MDRailsNails.logger.info("boostAmount = {}", boostAmount);
+        double speedChange = Math.max(-boostAmount, Math.min(boostAmount, speedDifference));
+
+        double maxSpeed = currentSpeed + speedChange;
+
+        if (currentSpeed > 0.0001) {
+            double scale = maxSpeed / currentSpeed;
+            cart.motionX *= scale;
+            cart.motionZ *= scale;
+        }
+
+        applyBoost(world, cart, x, y, z, railShape, maxSpeed, powered, boostAmount);
     }
 }

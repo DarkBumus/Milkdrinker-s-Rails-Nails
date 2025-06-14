@@ -37,6 +37,8 @@ public class ModConfigurationItems {
     public static boolean enableRailwayLeverLinkingAbility;
     public static boolean enableRailwayLeverWhackingAbility;
 
+    public static boolean enableAwakenedEnderEye;
+
 
     /**
      * Initializes the item configuration settings by reading values from the provided configuration file.
@@ -53,35 +55,38 @@ public class ModConfigurationItems {
             enableFeatures
                 + "\nRailway Lever"
                 + "\n");
-
         enableRailwayLeverModeAbility = config.getBoolean(
             "02-enableRailwayLeverModeAbility",
             categoryNameIteArm,
             true,
             "Regulates whether or not the Railway Lever should be able to change powered rails from active to inactive and vice-versa");
-
         enableRailwayLeverTurningAbility = config.getBoolean(
             "03-enableRailwayLeverTurningAbility",
             categoryNameIteArm,
             true,
             "Regulates whether or not the Railway Lever should be able to turn rails");
-
         enableRailwayLeverPushingAbility = config.getBoolean(
             "04-enableRailwayLeverPushingAbility",
             categoryNameIteArm,
             true,
             "Regulates whether or not the Railway Lever should able able to push carts");
-
         enableRailwayLeverLinkingAbility = config.getBoolean(
             "05-enableRailwayLeverLinkingAbility",
             categoryNameIteArm,
             true,
             "Regulates whether or not the Railway Lever should be able to link carts");
-
         enableRailwayLeverWhackingAbility = config.getBoolean(
             "06-enableRailwayLeverWhackingAbility",
             categoryNameIteArm,
             true,
             "Regulates whether or not the Railway Lever should be able to whack carts");
+
+        enableAwakenedEnderEye = config.getBoolean(
+            "07-enableAwakenedEnderEye",
+            categoryNameIte,
+            true,
+            enableFeatures
+            + "\nAwakened Ender Eye"
+            + "\n");
     }
 }

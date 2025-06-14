@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
+import static darkbum.mdrailsnails.common.config.ModConfigurationVanillaChanges.*;
 import static darkbum.mdrailsnails.util.RailUtils.*;
 
 @Mixin({BlockRailBase.class})
@@ -18,6 +19,7 @@ public abstract class MixinBlockRailBase {
         remap = false
     )
     public float getRailMaxSpeed(float original, @Local(argsOnly = true) World world) {
-        return getMinecartSpeedFromRules(world);
+        if (changeRailMaxSpeed) return getMinecartSpeedFromRules(world);
+        return 0.4f;
     }
 }

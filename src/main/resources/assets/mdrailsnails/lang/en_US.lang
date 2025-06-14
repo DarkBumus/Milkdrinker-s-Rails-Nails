@@ -7,10 +7,22 @@ itemGroup.mdrn_blocks=Rails&Nails Blocks
 # BLOCKS
 
 tile.goldenRail.name=Booster Rail
+container.hopper=Hopper
+
+tile.directional_redstone_block.name=Directional Redstone Block
 
 tile.conductor.name=Conductor
 tile.conductor.tooltip.0=Gives out a redstone signal if a passing cart is identical with a cart at an adjacent side
 tile.conductor.tooltip.1=§cRequires a Detector Rail infront of it to detect passing carts.
+
+tile.distributor.name=Distributor
+container.distributor=Distributor
+
+tile.filter.name=Filter
+container.filter=Filter
+
+tile.upper.name=Upper
+container.upper=Upper
 
 tile.junction_rail.name=Junction Rail
 tile.junction_rail.tooltip.0=Carts can pass in both directions simultaneously
@@ -97,6 +109,8 @@ tile.cart_detector_rail.tooltip.0=Gives out a redstone signal if a passing cart 
 tile.high_speed_rail.name=High-Speed Rail
 tile.high_speed_rail.tooltip.0=§4§lDangerous!
 tile.high_speed_rail.tooltip.1=Allows carts to traverse at much higher speed than normal
+death.attack.high_speed_explosion_damage=%1$s was turned to ash in a high-speed Minecart
+death.attack.high_speed_explosion_damage.player=%1$s was turned to ash in a high-speed Minecart while trying to escape %2$s
 
 tile.high_speed_booster_rail.name=High-Speed Booster Rail
 tile.high_speed_booster_rail.tooltip.0=§4§lDangerous!
@@ -130,11 +144,16 @@ item.railway_lever.mess.link.failed_not_found=Link Failed: Original cart not fou
 item.railway_lever.mess.link.failed_too_far=Link Failed: The carts are too far apart.
 item.railway_lever.mess.link.failed_too_many=Link Failed: You cannot link too many carts.
 
+item.awakened_ender_eye.name=Awakened Ender Eye
+item.awakened_ender_eye.tooltip=If paired to a container, allows remote access
+item.awakened_ender_eye.mess=Link to container broken
+
 item.hauler_minecart.name=Hauler Minecart
 
 
 # ENTITIES
 
+entity.ItemFrame.name=Item Frame
 entity.MinecartRideable.name=Minecart
 entity.MinecartChest.name=Minecart with Chest
 entity.MinecartFurnace.name=Minecart with Furnace
@@ -150,7 +169,7 @@ container.hauler_minecart.fueltime=Seconds
 # ACHIEVEMENTS
 
 
-# HANDS OFF!
+# HANDS OFF, DO NOT LOCALIZE!
 
 item.railway_lever.tooltip.0.condition=enableRailwayLeverModeAbility
 item.railway_lever.tooltip.1.condition=enableRailwayLeverTurningAbility

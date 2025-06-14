@@ -18,18 +18,29 @@ public class ModConfigurationVanillaChanges {
 
     // Category Strings
     private static final String categoryNameVan = "vanilla changes";
-    private static final String categoryDescriptionVan = "All the Vanilla Changes configuration";
+    private static final String categoryDescriptionVan = "All the Vanilla Changes configuration that does not touch Mixins";
+    private static final String categoryNameVanMix = "vanilla changes | mixins";
+    private static final String categoryDescriptionVanMix = "All the Vanilla Changes configuration that touches Mixins";
+
 
     // Replacement Strings
     private static final String enableFeatures = "Enables the following features:";
-    private static final String compatibilityString1 = "Notes: This is for when you have Et Futurum Requiem installed, but for some reason, don't want ";
-    private static final String compatibilityString2 = " to be present";
+    private static final String compatibilityStringEFR1 = "Notes: This is for when you have Et Futurum Requiem installed, but for some reason, don't want ";
+    private static final String compatibilityStringEFR2 = " to be present";
+
+    // Mixins Strings
+    private static final String changedClasses = "Classes changed: ";
+    private static final String changedMethods = "Methods changed: ";
 
     // Config Options VanillaChanges
     public static boolean enableRecipeChanges;
 
     public static boolean enableMinecartMaxSpeedGameRule;
     public static int minecartMaxSpeedBaseValue;
+
+    // Config Options VanillaChanges Mixins
+    public static boolean changeRailMaxSpeed;
+    public static boolean changeHopperRenderer;
 
 
     /**
@@ -56,13 +67,37 @@ public class ModConfigurationVanillaChanges {
             categoryNameVan,
             true,
             enableFeatures + "minecartMaxSpeed Game Rule"
-            + "\n");
+                + "\n");
+
         minecartMaxSpeedBaseValue = config.getInt(
             "03-minecartMaxSpeedBaseValue",
             categoryNameVan,
             8,
             1,
             10,
-            "Regulates the base maximum speed of minecarts, before the minecartMaxSpeed Game Rule is applied.");
+            "Regulates the base maximum speed of minecarts, before the minecartMaxSpeed Game Rule is applied"
+                + "\n");
+
+        config.setCategoryComment(categoryNameVanMix, categoryDescriptionVanMix);
+
+        changeRailMaxSpeed = config.getBoolean(
+            "02-changeRailMaxSpeed",
+            categoryNameVanMix,
+            true,
+            "Opens the rail max speed up to manipulation, facilitating changes in the minecart base speed"
+                + "\nfalse sets the value to the vanilla value of getRailMaxSpeed (0.4f), so setting it to that will not change anything"
+                + "\n" + changedClasses + "BlockRailBase.class"
+                + "\n" + changedMethods + "getRailMaxSpeed()"
+                + "\n");
+
+        changeHopperRenderer = config.getBoolean(
+            "02-changeHopperRenderer",
+            categoryNameVanMix,
+            true,
+            "Changes the renderer of the Hopper to fix the underside texture bug"
+                + "\nfalse sets the value to the vanilla value of the render ID (38), so setting it to that will not change anything"
+                + "\n" + changedClasses + "BlockHopper.class"
+                + "\n" + changedMethods + "getIcon(), getRenderType()"
+                + "\n");
     }
 }

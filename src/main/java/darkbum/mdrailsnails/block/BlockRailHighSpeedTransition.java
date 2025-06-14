@@ -37,9 +37,10 @@ public class BlockRailHighSpeedTransition extends BlockRailPowered implements IH
         return getMinecartSpeedFromRules(world) * (highSpeedRailsSpeed * 1.0f);
     }
 
+    @Override
     public void onMinecartPass(World world, EntityMinecart cart, int x, int y, int z) {
         handleTransitioningCartBehavior(world, cart, x, y, z);
-        updateHighSpeedState(world, cart);
+        if (enableHighSpeedConsequences) updateHighSpeedState(world, cart);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package darkbum.mdrailsnails.init;
 
-import darkbum.mdrailsnails.block.itemblock.ItemBlockConductor;
-import darkbum.mdrailsnails.block.itemblock.ItemBlockRail;
+import darkbum.mdrailsnails.block.itemblock.*;
 import darkbum.mdrailsnails.block.rails.IModeableRail;
 import net.minecraft.block.*;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,7 +9,9 @@ import darkbum.mdrailsnails.block.*;
 
 import static darkbum.mdrailsnails.common.config.ModConfigurationBlocks.*;
 import static darkbum.mdrailsnails.common.proxy.CommonProxy.*;
+import static darkbum.mdrailsnails.init.ModExternalLoader.efr;
 import static darkbum.mdrailsnails.util.ConditionalRegistrar.*;
+import static net.minecraft.creativetab.CreativeTabs.*;
 
 /**
  * Blocks class.
@@ -23,9 +24,13 @@ public class ModBlocks {
     static CreativeTabs tab = tabMDRNBlocks;
 
     public static Block dev_block;
+    public static Block directional_redstone_block;
     public static Block copper_rail_windlass;
     public static Block copper_rail;
     public static Block conductor;
+    public static Block distributor;
+    public static Block filter;
+    public static Block upper;
     public static Block junction_rail;
     public static Block wye_rail_j;
     public static Block wye_rail_r;
@@ -61,43 +66,51 @@ public class ModBlocks {
     public static void init() {
 
         dev_block = new BlockDevBlock("dev_block", tab);
+        directional_redstone_block = new BlockDirectionalRedstoneBlock("directional_redstone_block", tab);
         copper_rail_windlass = new BlockCopperRailWindlass("copper_rail_windlass", tab);
         copper_rail = new BlockRailCopper("copper_rail", null, 1000).setBlockTextureName("mdrailsnails:rails/rail_copper");
         conductor = new BlockConductor("conductor", tab);
-        junction_rail = new BlockJunctionRail("junction_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_junction");
-        wye_rail_j = new BlockWyeRail("wye_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_wye_junction");
+        distributor = new BlockDistributor("distributor", tab);
+        filter = new BlockFilter("filter", tab);
+        upper = new BlockUpper("upper", tab);
+        junction_rail = new BlockJunctionRail("junction_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_junction");
+        wye_rail_j = new BlockWyeRail("wye_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_wye_junction");
         wye_rail_r = new BlockWyeRail("wye_rail", null).setBlockTextureName("mdrailsnails:rails/rail_wye_right");
         wye_rail_l = new BlockWyeRail("wye_rail", null).setBlockTextureName("mdrailsnails:rails/rail_wye_left");
-        one_way_rail_r = new BlockRailOneWay("one_way_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_oneway_right");
+        one_way_rail_r = new BlockRailOneWay("one_way_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_oneway_right");
         one_way_rail_l = new BlockRailOneWay("one_way_rail", null).setBlockTextureName("mdrailsnails:rails/rail_oneway_left");
-        locking_rail = new BlockRailLocking("locking_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_locking");
+        locking_rail = new BlockRailLocking("locking_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_locking");
         locking_release_rail = new BlockRailLocking("locking_rail", null).setBlockTextureName("mdrailsnails:rails/rail_locking_release");
         locking_release_rail_i = new BlockRailLocking("locking_rail", null).setBlockTextureName("mdrailsnails:rails/rail_locking_release_inverted");
         locking_release_rail_r = new BlockRailLocking("locking_rail", null).setBlockTextureName("mdrailsnails:rails/rail_locking_release_right");
         locking_release_rail_l = new BlockRailLocking("locking_rail", null).setBlockTextureName("mdrailsnails:rails/rail_locking_release_left");
-        dismounting_rail_se = new BlockRailDismounting("dismounting_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_dismounting_southeast");
+        dismounting_rail_se = new BlockRailDismounting("dismounting_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_dismounting_southeast");
         dismounting_rail_nw = new BlockRailDismounting("dismounting_rail", null).setBlockTextureName("mdrailsnails:rails/rail_dismounting_northwest");
-        mounting_rail = new BlockRailMounting("mounting_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_mounting");
-        coupling_rail = new BlockRailCoupling("coupling_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_coupling");
+        mounting_rail = new BlockRailMounting("mounting_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_mounting");
+        coupling_rail = new BlockRailCoupling("coupling_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_coupling");
         decoupling_rail = new BlockRailCoupling("coupling_rail", null).setBlockTextureName("mdrailsnails:rails/rail_decoupling");
-        suspended_rail = new BlockRailSuspended("suspended_rail", tab, suspendedRailReach).setBlockTextureName("mdrailsnails:rails/rail_suspended");
-        disposing_rail = new BlockRailDisposing("disposing_rail", tab, suspendedRailReach).setBlockTextureName("mdrailsnails:rails/rail_disposing");
-        launching_rail = new BlockRailLaunching("launching_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_launching");
-        cart_dislocating_rail = new BlockRailCartDislocating("cart_dislocating_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_cart_dislocating");
-        one_way_detector_rail_r = new BlockRailOneWayDetector("one_way_detector_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_oneway_detector_right");
+        suspended_rail = new BlockRailSuspended("suspended_rail", tabTransport, suspendedRailReach).setBlockTextureName("mdrailsnails:rails/rail_suspended");
+        disposing_rail = new BlockRailDisposing("disposing_rail", tabTransport, suspendedRailReach).setBlockTextureName("mdrailsnails:rails/rail_disposing");
+        launching_rail = new BlockRailLaunching("launching_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_launching");
+        cart_dislocating_rail = new BlockRailCartDislocating("cart_dislocating_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_cart_dislocating");
+        one_way_detector_rail_r = new BlockRailOneWayDetector("one_way_detector_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_oneway_detector_right");
         one_way_detector_rail_l = new BlockRailOneWayDetector("one_way_detector_rail", null).setBlockTextureName("mdrailsnails:rails/rail_oneway_detector_left");
-        cart_detector_rail = new BlockRailCartDetector("cart_detector_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_cart_detector");
-        slowdown_rail = new BlockRailSlowdown("slowdown_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_slowdown");
-        high_speed_rail = new BlockRailHighSpeed("high_speed_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_high_speed");
-        high_speed_booster_rail = new BlockRailHighSpeedBooster("high_speed_booster_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_high_speed_booster");
-        high_speed_transition_rail_r = new BlockRailHighSpeedTransition("high_speed_transition_rail", tab).setBlockTextureName("mdrailsnails:rails/rail_high_speed_transition_right");
+        cart_detector_rail = new BlockRailCartDetector("cart_detector_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_cart_detector");
+        slowdown_rail = new BlockRailSlowdown("slowdown_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_slowdown");
+        high_speed_rail = new BlockRailHighSpeed("high_speed_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_high_speed");
+        high_speed_booster_rail = new BlockRailHighSpeedBooster("high_speed_booster_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_high_speed_booster");
+        high_speed_transition_rail_r = new BlockRailHighSpeedTransition("high_speed_transition_rail", tabTransport).setBlockTextureName("mdrailsnails:rails/rail_high_speed_transition_right");
         high_speed_transition_rail_l = new BlockRailHighSpeedTransition("high_speed_transition_rail", null).setBlockTextureName("mdrailsnails:rails/rail_high_speed_transition_left");
 
 
         registerBlock(dev_block, "dev_block");
+        registerBlock(directional_redstone_block, "directional_redstone_block", enableDirectionalRedstoneBlock);
 //        registerBlock(copper_rail_windlass, "copper_rail_windlass", enableWindlass);
 //        registerBlock(copper_rail, "copper_rail", enableWindlass);
-//        registerBlock(conductor, ItemBlockConductor.class, "conductor", enableConductor);
+//        registerBlock(conductor, ItemBlockConductor.class, "conductor", efr, enableConductor);
+        registerBlock(distributor, ItemBlockDistributor.class, "distributor", enableDistributor);
+        registerBlock(filter, ItemBlockFilter.class, "filter", enableFilter);
+        registerBlock(upper, ItemBlockUpper.class, "upper", enableUpper);
         registerBlock(junction_rail, ItemBlockRail.class, "junction_rail", enableJunctionRail);
         registerBlock(wye_rail_j, ItemBlockRail.class, "wye_rail_j", enableWyeRail);
         registerBlock(wye_rail_r, ItemBlockRail.class, "wye_rail_r", enableWyeRail);

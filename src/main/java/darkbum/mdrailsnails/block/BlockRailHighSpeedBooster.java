@@ -24,8 +24,9 @@ public class BlockRailHighSpeedBooster extends BlockRailPowered implements IHigh
         return getMinecartSpeedFromRules(world) * (highSpeedRailsSpeed * 1.0f);
     }
 
+    @Override
     public void onMinecartPass(World world, EntityMinecart cart, int x, int y, int z) {
         handleBoostingCartBehavior(world, cart, x, y, z);
-        updateHighSpeedState(world, cart);
+        if (enableHighSpeedConsequences) updateHighSpeedState(world, cart);
     }
 }

@@ -59,11 +59,12 @@ public class CommonProxy {
      * Registers the event handlers for pre-initialization.
      */
     private void registerEventHandlers() {
-        register(new EntityInteractEventHandler());
         register(new AttackEntityEventHandler());
+        register(new EntityInteractEventHandler());
+        register(new MinecartUpdateEventHandler());
+        register(new PlayerOpenContainerEventHandler());
         register(new WorldLoadEventHandler());
         register(new WorldTickHandler());
-        register(new MinecartUpdateEventHandler());
     }
 
     /**

@@ -2,6 +2,8 @@ package darkbum.mdrailsnails.common.config;
 
 import net.minecraftforge.common.config.Configuration;
 
+import java.util.Locale;
+
 /**
  * Handles the configuration settings for all block-related features in Milkdrinker's Rails&Nails.
  * <p>
@@ -29,14 +31,17 @@ public class ModConfigurationBlocks {
     private static final String compatibilityStringEFR2 = " to be present";
 
     // Blocks Config Options
+    public static boolean enableDirectionalRedstoneBlock;
     public static boolean enableWindlass;
     public static int windlassReach;
     public static boolean enableConductor;
+    public static boolean enableDistributor;
+    public static boolean enableFilter;
+    public static boolean enableUpper;
 
     // Rail Blocks Config Options
     public static boolean enableJunctionRail;
     public static boolean enableWyeRail;
-    public static boolean enableSwitchRail;
     public static int slowdownRailSpeed;
     public static boolean enableOneWayRail;
     public static boolean enableLockingRail;
@@ -55,6 +60,7 @@ public class ModConfigurationBlocks {
     public static boolean enableSlowdownRail;
     public static boolean enableHighSpeedRails;
     public static int highSpeedRailsSpeed;
+    public static boolean enableHighSpeedConsequences;
 
 
     /**
@@ -65,27 +71,51 @@ public class ModConfigurationBlocks {
     public static void init(Configuration config) {
         config.setCategoryComment(categoryNameBlo, categoryDescriptionBlo);
 
+        enableDirectionalRedstoneBlock = config.getBoolean(
+            "01-enableDirectionalRedstoneBlock",
+            categoryNameBlo,
+            true,
+            enableFeatures + "\nDirectional Redstone Block");
+
         enableWindlass = config.getBoolean(
-            "01-enableWindlass",
+            "02-enableWindlass",
             categoryNameBlo,
             true,
             enableFeatures + "\nWindlass"
             + "\n");
         windlassReach = config.getInt(
-            "02-windlassReach",
+            "03-windlassReach",
             categoryNameBlo,
             1,
             1,
             1,
-            "Regulates the reach (per redstone level) that the windlass reels out."
-            + "\n(Setting this to, for example, 3 means that the windlass will provide 3 rails when powered with one level of redstone, 6 with two levels, 9 with three levels, etc.)");
+            "Regulates the reach (per iconFront level) that the windlass reels out."
+            + "\n(Setting this to, for example, 3 means that the windlass will provide 3 rails when powered with one level of iconFront, 6 with two levels, 9 with three levels, etc.)");
 
         enableConductor = config.getBoolean(
-            "ß3-enableConductor",
+            "04-enableConductor",
             categoryNameBlo,
             true,
             enableFeatures + "\nConductor"
             + "\n");
+
+        enableDistributor = config.getBoolean(
+            "05-enableDistributor",
+            categoryNameBlo,
+            true,
+            enableFeatures + "\nDistributor");
+
+        enableFilter = config.getBoolean(
+            "06-enableFilter",
+            categoryNameBlo,
+            true,
+            enableFeatures + "\nFilter");
+
+        enableUpper = config.getBoolean(
+            "07-enableUpper",
+            categoryNameBlo,
+            true,
+            enableFeatures + "\nUpper");
 
 
         config.setCategoryComment(categoryNameBloRai, categoryDescriptionBloRai);
@@ -103,13 +133,6 @@ public class ModConfigurationBlocks {
             true,
             enableFeatures + "\nWye Rail"
             + "\n");
-
-/*        enableSwitchRail = config.getBoolean(
-            "02-enableSwitchRail",
-            categoryNameBloRai,
-            true,
-            enableFeatures + "\nSwitch Rail"
-            + "\n");*/
 
         enableSlowdownRail = config.getBoolean(
             "02-enableSlowdownRail",
@@ -234,7 +257,12 @@ public class ModConfigurationBlocks {
             categoryNameBloRai,
             3,
             2,
-            5,
-            "Regulates the speed multiplier of High-Speed Rails compared to regular rails: 2 = 2x, 5 = 5x");
+            4,
+            "Regulates the speed multiplier of High-Speed Rails compared to regular rails: 2 = 2x, 4 = 4x");
+        enableHighSpeedConsequences = config.getBoolean(
+            "20-enableHighSpeedConsequences",
+            categoryNameBloRai,
+            true,
+            "Regulates whether or not high speed has dangerous consequences");
     }
 }

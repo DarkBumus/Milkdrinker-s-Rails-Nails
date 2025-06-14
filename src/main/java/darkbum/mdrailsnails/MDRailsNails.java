@@ -86,7 +86,7 @@ public class MDRailsNails {
         event.getModMetadata().name = GOLD + NAME + WHITE;
         event.getModMetadata().version = YELLOW + VERSION;
         event.getModMetadata().credits = AQUA
-            + "Thanks to contributor Jack and Roadhog";
+            + "Thanks to contributor Jack, mitchej123 and Roadhog";
 
         // Load and initialize configuration files
         File configDir = new File(event.getModConfigurationDirectory(), "mdrailsnails");
